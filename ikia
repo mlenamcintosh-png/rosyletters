@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>♡ My Little Corner ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Quicksand:wght@400;500;600&display=swap');
+
+:root {
+    --pink: #f5a9c8;
+    --dark-pink: #c75b87;
+    --light-pink: #fff0f6;
+    --lighter-pink: #fff8fb;
+    --white: #ffffff;
+    --text: #684b59;
+    --border: #f2d2df;
+    --shadow: 0 15px 40px rgba(199, 91, 135, 0.14);
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: "Quicksand", sans-serif;
+    background:
+        radial-gradient(circle at 10% 20%, #ffe1ed 0, transparent 25%),
+        radial-gradient(circle at 90% 80%, #ffdcea 0, transparent 25%),
+        linear-gradient(135deg, #ffffff, #fff5f9);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* CUSTOM CURSOR */
+
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--dark-pink);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width .15s, height .15s;
+}
+
+.cursor-dot {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: var(--dark-pink);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+}
+
+/* RIBBON */
+
+.ribbon {
+    position: fixed;
+    right: 25px;
+    top: 0;
+    width: 95px;
+    height: 125px;
+    background: var(--pink);
+    z-index: 20;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        50% 78%,
+        0 100%
+    );
+}
+
+.ribbon::after {
+    content: "♡";
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    color: white;
+    font-size: 27px;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 15;
+
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    padding: 16px 70px;
+
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 14px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    transition: .2s;
+}
+
+nav a:hover {
+    color: var(--dark-pink);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 92vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 20px 60px;
+
+    text-align: center;
+}
+
+.hero-card {
+    max-width: 820px;
+
+    padding: 60px 40px;
+
+    background: rgba(255,255,255,.82);
+
+    border: 1px solid var(--border);
+    border-radius: 40px;
+
+    box-shadow: var(--shadow);
+}
+
+.kicker {
+    color: var(--dark-pink);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+
+h1 {
+    margin: 18px 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 85px);
+
+    color: #b84f7b;
+}
+
+.hero p {
+    max-width: 620px;
+
+    margin: auto;
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.clock {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    background: var(--light-pink);
+
+    color: var(--dark-pink);
+
+    font-weight: 600;
+}
+
+.theme-button {
+    margin-top: 15px;
+
+    padding: 11px 18px;
+
+    border-radius: 30px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    color: var(--dark-pink);
+
+    cursor: none;
+
+    font-family: inherit;
+}
+
+/* SECTIONS */
+
+section {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 90px 25px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 43px;
+
+    color: #b84f7b;
+
+    margin-bottom: 40px;
+}
+
+/* CARDS */
+
+.card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 22px;
+}
+
+.card {
+    padding: 28px;
+
+    background: rgba(255,255,255,.9);
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    box-shadow: var(--shadow);
+
+    transition: transform .25s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+.card h3 {
+    color: #b84f7b;
+}
+
+.emoji {
+    font-size: 35px;
+}
+
+/* GALLERY */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+
+.polaroid {
+    padding: 12px 12px 25px;
+
+    background: white;
+
+    box-shadow: var(--shadow);
+
+    transform: rotate(-2deg);
+
+    transition: .25s;
+}
+
+.polaroid:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.polaroid:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0) scale(1.03);
+}
+
+.photo {
+    height: 210px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd9e8,
+            #fff
+        );
+
+    font-size: 50px;
+}
+
+.polaroid p {
+    text-align: center;
+
+    margin: 13px 0 0;
+
+    font-family: "Playfair Display", serif;
+}
+
+/* JOURNAL */
+
+.journal {
+    max-width: 750px;
+
+    margin: auto;
+}
+
+.entry {
+    margin: 18px 0;
+
+    padding: 25px;
+
+    background: white;
+
+    border-left: 5px solid var(--pink);
+
+    border-radius: 0 20px 20px 0;
+
+    box-shadow: var(--shadow);
+}
+
+.entry small {
+    color: var(--dark-pink);
+}
+
+/* GUESTBOOK */
+
+.guestbook {
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.guestbook form {
+    display: grid;
+
+    gap: 13px;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--pink);
+}
+
+.submit {
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background: var(--dark-pink);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: none;
+}
+
+/* LINKS */
+
+.social-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* FLOWERS */
+
+.flower {
+    position: fixed;
+
+    bottom: -50px;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation: floatFlower linear forwards;
+}
+
+@keyframes floatFlower {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translateY(-120vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* DARK MODE */
+
+.dark {
+    --text: #f8dce8;
+    --border: #5b3d4b;
+}
+
+.dark body {
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            #4b2b3a,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #21181d,
+            #38232c
+        );
+}
+
+.dark nav,
+.dark .hero-card,
+.dark .card,
+.dark .polaroid,
+.dark .entry,
+.dark .guestbook {
+    background: rgba(43,30,37,.94);
+
+    color: var(--text);
+
+    border-color: #5b3d4b;
+}
+
+.dark .photo {
+    background:
+        linear-gradient(
+            135deg,
+            #563546,
+            #302127
+        );
+}
+
+.dark input,
+.dark textarea {
+    background: #2b1e25;
+    color: white;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: #a56a83;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    nav {
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        padding: 14px;
+
+        gap: 18px;
+    }
+
+    .ribbon {
+        display: none;
+    }
+
+    .hero-card {
+        padding: 45px 22px;
+    }
+
+    section {
+        padding: 70px 18px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- RIBBON -->
+<div class="ribbon"></div>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#favorites">Favorites</a>
+<a href="#gallery">Gallery</a>
+<a href="#journal">Journal</a>
+<a href="#music">Music</a>
+<a href="#socials">Socials</a>
+<a href="#guestbook">Guestbook</a>
+
+</nav>
+
+
+<!-- HOME -->
+
+<header class="hero" id="home">
+
+<div class="hero-card">
+
+<div class="kicker">
+♡ a tiny corner of the internet ♡
+</div>
+
+<h1>
+Welcome to my little corner
+</h1>
+
+<p>
+Hi, I'm <strong>Ikia</strong>!  
+A little place for my thoughts, memories & favorite things.
+</p>
+
+<div class="clock" id="clock">
+00:00:00
+</div>
+
+<br>
+
+<button
+class="theme-button"
+onclick="toggleTheme()">
+
+☾ Switch to night
+
+</button>
+
+</div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">
+About Me ♡
+</h2>
+
+<div class="card-grid">
+
+<div class="card">
+
+<div class="emoji">🌷</div>
+
+<h3>A little about me</h3>
+
+<p>
+Welcome to my little corner of the internet.
+This is a place for my memories, favorite things,
+thoughts and everything that makes me happy.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🎀</div>
+
+<h3>My vibe</h3>
+
+<p>
+Soft pinks, pretty things, cozy moments,
+cute details, flowers, music and a little
+bit of everything.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">✨</div>
+
+<h3>Fun facts</h3>
+
+<p>
+Add your own fun facts here!
+You can tell people about your hobbies,
+favorite things or random things about you.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAVORITES -->
+
+<section id="favorites">
+
+<h2 class="section-title">
+My Favorites 🎀
+</h2>
+
+<div class="card-grid">
+
+
+<div class="card">
+
+<div class="emoji">🎧</div>
+
+<h3>Music</h3>
+
+<p>
+Add your favorite artists,
+albums and songs here.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🎬</div>
+
+<h3>Movies & Shows</h3>
+
+<p>
+Add your comfort movies
+and favorite shows here.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🍰</div>
+
+<h3>Food</h3>
+
+<p>
+Add your favorite meals,
+snacks and desserts.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🌸</div>
+
+<h3>Flowers</h3>
+
+<p>
+Add your favorite flowers
+and pretty plants.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🎨</div>
+
+<h3>Colors</h3>
+
+<p>
+Baby pink, white and
+whatever other colors you love.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">📚</div>
+
+<h3>Books</h3>
+
+<p>
+Add your favorite books
+or your reading list.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<h2 class="section-title">
+Little Memories 📸
+</h2>
+
+<div class="gallery">
+
+
+<div class="polaroid">
+
+<div class="photo">
+🌸
+</div>
+
+<p>
+pretty days
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+🎀
+</div>
+
+<p>
+little moments
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+🦢
+</div>
+
+<p>
+sweet memories
+</p>
+
+</div>
+
+</div>
+
+<p style="text-align:center">
+Replace these with your own photos ♡
+</p>
+
+</section>
+
+
+<!-- JOURNAL -->
+
+<section id="journal">
+
+<h2 class="section-title">
+My Journal 📖
+</h2>
+
+<div class="journal">
+
+
+<div class="entry">
+
+<small>
+August 24, 2026
+</small>
+
+<h3>
+A new little beginning ♡
+</h3>
+
+<p>
+This is your first journal entry.
+Write about your day, something exciting,
+a memory or simply a random thought.
+</p>
+
+</div>
+
+
+<div class="entry">
+
+<small>
+Your next date
+</small>
+
+<h3>
+Another little entry
+</h3>
+
+<p>
+Duplicate this box whenever you want
+to add another journal entry.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<section id="music">
+
+<h2 class="section-title">
+Music Corner 🎧
+</h2>
+
+<div class="card" style="text-align:center">
+
+<div class="emoji">
+🎶
+</div>
+
+<h3>
+My Playlist
+</h3>
+
+<p>
+Put your favorite playlist here.
+You can add a YouTube or Spotify link.
+</p>
+
+<a
+href="https://www.youtube.com/"
+target="_blank"
+class="clock">
+
+♡ listen with me ♡
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- SOCIALS -->
+
+<section id="socials">
+
+<h2 class="section-title">
+Find Me ♡
+</h2>
+
+<div class="card-grid">
+
+
+<a
+href="#"
+class="card social-link">
+
+<div class="emoji">
+📷
+</div>
+
+<h3>
+Instagram
+</h3>
+
+<p>
+@yourusername
+</p>
+
+</a>
+
+
+<a
+href="#"
+class="card social-link">
+
+<div class="emoji">
+🎵
+</div>
+
+<h3>
+TikTok
+</h3>
+
+<p>
+@yourusername
+</p>
+
+</a>
+
+
+<a
+href="#"
+class="card social-link">
+
+<div class="emoji">
+▶️
+</div>
+
+<h3>
+YouTube
+</h3>
+
+<p>
+Your channel
+</p>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- GUESTBOOK -->
+
+<section id="guestbook">
+
+<h2 class="section-title">
+Little Guestbook 💌
+</h2>
+
+<div class="guestbook card">
+
+<form
+onsubmit="signGuestbook(event)">
+
+<input
+id="guestName"
+placeholder="Your name ♡"
+required>
+
+<textarea
+id="guestMessage"
+rows="4"
+placeholder="Leave a little message..."
+required>
+</textarea>
+
+<button class="submit">
+Sign my guestbook ♡
+</button>
+
+</form>
+
+<div id="messages"></div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+♡ made with love & a little bit of pink ♡
+
+<br><br>
+
+© 2026 My Little Corner
+
+</footer>
+
+
+<script>
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+const cursor =
+document.getElementById("cursor");
+
+const cursorDot =
+document.getElementById("cursorDot");
+
+document.addEventListener(
+"mousemove",
+function(e) {
+
+cursor.style.left =
+e.clientX + "px";
+
+cursor.style.top =
+e.clientY + "px";
+
+cursorDot.style.left =
+e.clientX + "px";
+
+cursorDot.style.top =
+e.clientY + "px";
+
+});
+
+
+document
+.querySelectorAll(
+"a, button, input, textarea"
+)
+.forEach(function(element) {
+
+element.addEventListener(
+"mouseenter",
+function() {
+
+cursor.style.width = "30px";
+cursor.style.height = "30px";
+
+});
+
+element.addEventListener(
+"mouseleave",
+function() {
+
+cursor.style.width = "20px";
+cursor.style.height = "20px";
+
+});
+
+});
+
+
+/* =========================
+   DIGITAL CLOCK
+========================= */
+
+function updateClock() {
+
+const now = new Date();
+
+document.getElementById(
+"clock"
+).textContent =
+now.toLocaleTimeString(
+[],
+{
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit"
+}
+);
+
+}
+
+setInterval(
+updateClock,
+1000
+);
+
+updateClock();
+
+
+/* =========================
+   DAY / NIGHT MODE
+========================= */
+
+function toggleTheme() {
+
+document.documentElement
+.classList.toggle("dark");
+
+const button =
+document.querySelector(
+".theme-button"
+);
+
+if(
+document.documentElement
+.classList.contains("dark")
+) {
+
+button.textContent =
+"☀ Switch to day";
+
+} else {
+
+button.textContent =
+"☾ Switch to night";
+
+}
+
+}
+
+
+/* =========================
+   FLOATING FLOWERS
+========================= */
+
+function createFlower() {
+
+const flower =
+document.createElement("div");
+
+flower.className =
+"flower";
+
+const flowers =
+[
+"🌸",
+"🌷",
+"🌼",
+"✿",
+"♡",
+"❀"
+];
+
+flower.textContent =
+flowers[
+Math.floor(
+Math.random() *
+flowers.length
+)
+];
+
+flower.style.left =
+Math.random() * 100 + "vw";
+
+flower.style.fontSize =
+(14 +
+Math.random() * 18) + "px";
+
+flower.style.animationDuration =
+(6 +
+Math.random() * 6) + "s";
+
+document.body.appendChild(
+flower
+);
+
+setTimeout(
+function() {
+
+flower.remove();
+
+},
+12000
+);
+
+}
+
+setInterval(
+createFlower,
+1200
+);
+
+
+/* =========================
+   GUESTBOOK
+========================= */
+
+function signGuestbook(event) {
+
+event.preventDefault();
+
+const name =
+document.getElementById(
+"guestName"
+).value.trim();
+
+const message =
+document.getElementById(
+"guestMessage"
+).value.trim();
+
+const entry =
+document.createElement("div");
+
+entry.className =
+"entry";
+
+entry.innerHTML =
+`
+<strong>
+${escapeHTML(name)}
+</strong>
+
+<p>
+${escapeHTML(message)}
+</p>
+`;
+
+document
+.getElementById("messages")
+.prepend(entry);
+
+event.target.reset();
+
+}
+
+
+/* Prevent HTML from being
+   inserted into guestbook */
+
+function escapeHTML(text) {
+
+return text.replace(
+/[&<>"']/g,
+function(character) {
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[character];
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
