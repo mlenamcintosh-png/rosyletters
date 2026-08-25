@@ -946,3 +946,24 @@ footer {
     font-weight: bold;
     letter-spacing: 2px;
 }
+.date-clock-bubble {
+    display: inline-block;
+    background: #f7a8c4;
+    color: white;
+    padding: 18px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(180, 80, 120, 0.2);
+    margin: 15px auto;
+}
+
+#currentDate {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+#clock {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
