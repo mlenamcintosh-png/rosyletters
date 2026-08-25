@@ -1,502 +1,824 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&family=Quicksand:wght@400;500;600&display=swap');
+/* =====================================
+   CLOCK
+===================================== */
 
-:root {
-    --pink: #f4a8c7;
-    --dark-pink: #c85b87;
-    --light-pink: #fff0f6;
-    --very-light: #fff9fc;
-    --white: #ffffff;
-    --text: #674957;
-    --border: #f0d0dd;
-    --shadow: 0 15px 40px rgba(200, 91, 135, .14);
+function updateClock() {
+
+    const clock =
+        document.getElementById("clock");
+
+    if (!clock) return;
+
+    const now = new Date();
+
+    clock.textContent =
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
 }
 
-* {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+setInterval(updateClock, 1000);
+
+updateClock();
+
+
+/* =====================================
+   DATE
+===================================== */
+
+function updateDate() {
+
+    const dateElement =
+        document.getElementById("currentDate");
+
+    if (!dateElement) return;
+
+    const today = new Date();
+
+    dateElement.textContent =
+        today.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        });
 }
 
-body {
-    margin: 0;
-    font-family: "Quicksand", sans-serif;
-    color: var(--text);
+updateDate();
 
-    background:
-        radial-gradient(circle at 10% 20%, #ffe0ec 0, transparent 25%),
-        radial-gradient(circle at 90% 80%, #ffdce9 0, transparent 25%),
-        linear-gradient(135deg, #ffffff, #fff5f9);
 
-    overflow-x: hidden;
+/* =====================================
+   FLOATING FLOWERS
+===================================== */
+
+function createFlower() {
+
+    const flower =
+        document.createElement("div");
+
+    flower.className =
+        "floating-flower";
+
+    const flowers = [
+        "🌸",
+        "🌷",
+        "🌼",
+        "🌺",
+        "✿",
+        "❀",
+        "♡"
+    ];
+
+    flower.textContent =
+        flowers[
+            Math.floor(
+                Math.random() *
+                flowers.length
+            )
+        ];
+
+    flower.style.left =
+        Math.random() * 100 + "vw";
+
+    flower.style.fontSize =
+        15 + Math.random() * 20 + "px";
+
+    flower.style.animationDuration =
+        6 + Math.random() * 6 + "s";
+
+    document.body.appendChild(flower);
+
+    setTimeout(
+        () => flower.remove(),
+        12000
+    );
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+setInterval(createFlower, 1500);
 
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
 
-    display: flex;
-    justify-content: center;
-    gap: 22px;
+/* =====================================
+   FLOWER FACTS
+===================================== */
 
-    padding: 15px 20px;
+const flowerFacts = [
 
-    background: rgba(255,255,255,.82);
-    backdrop-filter: blur(15px);
+"Sunflowers are heliotropic when young, meaning their flower heads can follow the sun across the sky.",
 
-    border-bottom: 1px solid var(--border);
+"Some orchids mimic the appearance or scent of insects to help with pollination.",
 
-    font-size: 14px;
-}
+"Vanilla comes from an orchid species called Vanilla planifolia.",
 
-nav a:hover {
-    color: var(--dark-pink);
-}
+"The Titan arum produces one of the largest flower structures in the world.",
 
-.hero {
-    min-height: 90vh;
+"Roses are members of the same plant family as apples, strawberries and cherries.",
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+"Lotus flowers can regulate the temperature of their blossoms.",
 
-    text-align: center;
+"Some flowers only bloom at night and are pollinated by nocturnal animals.",
 
-    padding: 80px 20px;
-}
+"Victorians developed an elaborate language of flowers called floriography.",
 
-.hero-card {
-    max-width: 850px;
+"Cherry blossoms are strongly associated with spring and renewal in Japanese culture.",
 
-    padding: 60px 40px;
+"Some flowers have ultraviolet patterns that humans cannot see but many insects can.",
 
-    background: rgba(255,255,255,.85);
+"Water lilies can have enormous floating leaves.",
 
-    border: 1px solid var(--border);
-    border-radius: 40px;
+"Certain flowers close their petals at night and reopen them in daylight.",
 
-    box-shadow: var(--shadow);
-}
+"Lavender has been used historically for fragrance and gardens.",
 
-.kicker {
-    color: var(--dark-pink);
+"Some flowers can produce scents that change throughout the day."
 
-    font-size: 12px;
+];
 
-    letter-spacing: 5px;
-    text-transform: uppercase;
-}
 
-h1 {
-    margin: 20px 0;
+function newFlowerFact() {
 
-    font-family: "Playfair Display", serif;
+    const fact =
+        document.getElementById("flowerFact");
 
-    font-size: clamp(45px, 8vw, 85px);
+    if (!fact) return;
 
-    color: #b84f7b;
-}
-
-h2 {
-    font-family: "Playfair Display", serif;
-    color: #b84f7b;
-}
-
-.hero p {
-    font-size: 18px;
-    line-height: 1.8;
-}
-
-.button {
-    display: inline-block;
-
-    margin: 10px 5px;
-
-    padding: 13px 22px;
-
-    border-radius: 30px;
-
-    background: var(--dark-pink);
-
-    color: white;
-
-    border: none;
-
-    cursor: pointer;
-
-    font-family: inherit;
-}
-
-.button.secondary {
-    background: var(--light-pink);
-    color: var(--dark-pink);
-}
-
-.clock {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 12px 22px;
-
-    background: var(--light-pink);
-
-    border-radius: 30px;
-
-    color: var(--dark-pink);
-
-    font-weight: 600;
-}
-
-section {
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 80px 25px;
-}
-
-.section-title {
-    text-align: center;
-
-    font-size: 43px;
-
-    margin-bottom: 40px;
-}
-
-.card-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 22px;
-}
-
-.card {
-    padding: 28px;
-
-    background: rgba(255,255,255,.9);
-
-    border: 1px solid var(--border);
-
-    border-radius: 25px;
-
-    box-shadow: var(--shadow);
-
-    transition: .25s;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-}
-
-.emoji {
-    font-size: 38px;
-}
-
-.flower-fact {
-    max-width: 700px;
-
-    margin: 30px auto;
-
-    padding: 30px;
-
-    text-align: center;
-
-    background: white;
-
-    border-radius: 25px;
-
-    box-shadow: var(--shadow);
-
-    border: 1px solid var(--border);
-}
-
-.fact-text {
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-.gallery {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 25px;
-}
-
-.polaroid {
-    padding: 12px 12px 25px;
-
-    background: white;
-
-    box-shadow: var(--shadow);
-
-    transform: rotate(-2deg);
-}
-
-.polaroid:nth-child(2) {
-    transform: rotate(2deg);
-}
-
-.polaroid:nth-child(3) {
-    transform: rotate(-1deg);
-}
-
-.photo {
-    height: 220px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: linear-gradient(135deg,#ffd9e8,#fff);
-
-    font-size: 50px;
-}
-
-.polaroid p {
-    text-align: center;
-
-    font-family: "Playfair Display", serif;
-}
-
-.journal-list {
-    max-width: 800px;
-    margin: auto;
-}
-
-.journal-card {
-    padding: 25px;
-
-    margin-bottom: 20px;
-
-    background: #fffdf8;
-
-    border-left: 5px solid var(--pink);
-
-    border-radius: 0 20px 20px 0;
-
-    box-shadow: var(--shadow);
-}
-
-.journal-card small {
-    color: var(--dark-pink);
-}
-
-input,
-textarea,
-select {
-    width: 100%;
-
-    padding: 13px;
-
-    margin: 6px 0;
-
-    border: 1px solid var(--border);
-
-    border-radius: 14px;
-
-    font-family: inherit;
-
-    background: white;
-}
-
-footer {
-    padding: 50px 20px;
-
-    text-align: center;
-
-    color: #a56a83;
-}
-
-.floating-flower {
-    position: fixed;
-
-    bottom: -50px;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    animation: flowerFloat linear forwards;
-}
-
-@keyframes flowerFloat {
-
-    0% {
-        transform: translateY(0) rotate(0);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: .8;
-    }
-
-    100% {
-        transform: translateY(-120vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* ROOM DESIGNER */
-
-.room-container {
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 30px;
-}
-
-.room {
-    position: relative;
-
-    width: 100%;
-    min-height: 600px;
-
-    overflow: hidden;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            #fff2f7 0 70%,
-            #e9c7b1 70% 100%
+    const random =
+        Math.floor(
+            Math.random() *
+            flowerFacts.length
         );
 
-    border: 5px solid white;
-
-    box-shadow: var(--shadow);
+    fact.textContent =
+        flowerFacts[random];
 }
 
-.room-item {
-    position: absolute;
 
-    cursor: grab;
+/* =====================================
+   SURPRISE
+===================================== */
 
-    user-select: none;
+function surprise() {
 
-    font-size: 55px;
+    const surprises = [
 
-    transition: transform .15s;
+        "🌸 You found a tiny piece of happiness!",
+
+        "🎀 A secret bow appeared!",
+
+        "🦋 A fairy just flew past!",
+
+        "🌷 You deserve a beautiful day.",
+
+        "✨ Something is sparkling nearby.",
+
+        "🍓 The website has decided you're cute.",
+
+        "🌙 There may be another secret somewhere..."
+
+    ];
+
+    alert(
+        surprises[
+            Math.floor(
+                Math.random() *
+                surprises.length
+            )
+        ]
+    );
 }
 
-.room-item:hover {
-    transform: scale(1.08);
+
+/* =====================================
+   ROOM DESIGNER
+===================================== */
+
+let selectedItem = null;
+
+let roomItems = [];
+
+let itemCounter = 0;
+
+
+/* ADD FURNITURE */
+
+function addFurniture(
+    emoji,
+    name
+) {
+
+    const room =
+        document.getElementById("room");
+
+    if (!room) return;
+
+    itemCounter++;
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "draggable-item";
+
+    item.textContent =
+        emoji;
+
+    item.dataset.name =
+        name;
+
+    item.dataset.rotation =
+        "0";
+
+    item.dataset.scale =
+        "1";
+
+    item.dataset.id =
+        itemCounter;
+
+    item.style.left =
+        (15 + Math.random() * 65) + "%";
+
+    item.style.top =
+        (20 + Math.random() * 55) + "%";
+
+    room.appendChild(item);
+
+    makeDraggable(item);
+
+    selectItem(item);
+
+    roomItems.push(item);
 }
 
-.room-controls {
-    display: flex;
 
-    flex-wrap: wrap;
+/* SELECT ITEM */
 
-    gap: 10px;
+function selectItem(item) {
 
-    margin: 20px 0;
-}
+    if (selectedItem) {
 
-.room-controls button {
-    padding: 10px 15px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    background: white;
-
-    color: var(--dark-pink);
-
-    cursor: pointer;
-
-    font-family: inherit;
-}
-
-/* CHARACTER */
-
-.character-preview {
-    min-height: 350px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    background: var(--light-pink);
-
-    border-radius: 30px;
-
-    font-size: 150px;
-}
-
-.customizer {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(180px,1fr));
-
-    gap: 15px;
-
-    margin-top: 25px;
-}
-
-/* FAIRY GARDEN */
-
-.garden {
-    position: relative;
-
-    min-height: 700px;
-
-    overflow: hidden;
-
-    border-radius: 35px;
-
-    background:
-        radial-gradient(
-            circle at 70% 20%,
-            #fff2a8,
-            transparent 10%
-        ),
-        linear-gradient(
-            #a9d8c1,
-            #6fa987
+        selectedItem.classList.remove(
+            "selected"
         );
-}
 
-.garden-item {
-    position: absolute;
-
-    font-size: 50px;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.garden-item:hover {
-    transform: scale(1.2);
-}
-
-@media(max-width:700px) {
-
-    nav {
-        overflow-x: auto;
-        justify-content: flex-start;
     }
 
-    .hero-card {
-        padding: 45px 20px;
+    selectedItem = item;
+
+    item.classList.add(
+        "selected"
+    );
+
+    const controls =
+        document.getElementById(
+            "selected-controls"
+        );
+
+    if (controls) {
+
+        controls.classList.remove(
+            "hidden"
+        );
+
+    }
+}
+
+
+/* CLICK ITEM */
+
+function makeDraggable(item) {
+
+    let dragging = false;
+
+    let offsetX = 0;
+
+    let offsetY = 0;
+
+
+    item.addEventListener(
+        "mousedown",
+        function(e) {
+
+            selectItem(item);
+
+            dragging = true;
+
+            const rect =
+                item.getBoundingClientRect();
+
+            offsetX =
+                e.clientX - rect.left;
+
+            offsetY =
+                e.clientY - rect.top;
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mousemove",
+        function(e) {
+
+            if (!dragging) return;
+
+            const room =
+                document.getElementById(
+                    "room"
+                );
+
+            if (!room) return;
+
+            const roomRect =
+                room.getBoundingClientRect();
+
+            let x =
+                e.clientX -
+                roomRect.left -
+                offsetX;
+
+            let y =
+                e.clientY -
+                roomRect.top -
+                offsetY;
+
+
+            x =
+                Math.max(
+                    0,
+                    Math.min(
+                        x,
+                        roomRect.width - 90
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    0,
+                    Math.min(
+                        y,
+                        roomRect.height - 90
+                    )
+                );
+
+
+            item.style.left =
+                x + "px";
+
+            item.style.top =
+                y + "px";
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mouseup",
+        function() {
+
+            dragging = false;
+
+        }
+    );
+
+}
+
+
+/* ROTATE */
+
+function rotateSelected(
+    amount
+) {
+
+    if (!selectedItem) return;
+
+    let rotation =
+        parseFloat(
+            selectedItem.dataset.rotation
+        ) || 0;
+
+    rotation += amount;
+
+    selectedItem.dataset.rotation =
+        rotation;
+
+    updateTransform();
+
+}
+
+
+/* RESIZE */
+
+function resizeSelected(
+    amount
+) {
+
+    if (!selectedItem) return;
+
+    let scale =
+        parseFloat(
+            selectedItem.dataset.scale
+        ) || 1;
+
+    scale *= amount;
+
+    scale =
+        Math.max(
+            .5,
+            Math.min(
+                2.5,
+                scale
+            )
+        );
+
+    selectedItem.dataset.scale =
+        scale;
+
+    updateTransform();
+
+}
+
+
+/* TRANSFORM */
+
+function updateTransform() {
+
+    if (!selectedItem) return;
+
+    const rotation =
+        selectedItem.dataset.rotation;
+
+    const scale =
+        selectedItem.dataset.scale;
+
+    selectedItem.style.transform =
+        `rotate(${rotation}deg) scale(${scale})`;
+
+}
+
+
+/* DELETE */
+
+function deleteSelected() {
+
+    if (!selectedItem) return;
+
+    selectedItem.remove();
+
+    roomItems =
+        roomItems.filter(
+            item =>
+                item !== selectedItem
+        );
+
+    selectedItem = null;
+
+    const controls =
+        document.getElementById(
+            "selected-controls"
+        );
+
+    if (controls) {
+
+        controls.classList.add(
+            "hidden"
+        );
+
     }
 
-    section {
-        padding: 65px 18px;
+}
+
+
+/* CLEAR ROOM */
+
+function clearRoom() {
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+    if (!room) return;
+
+    const items =
+        room.querySelectorAll(
+            ".draggable-item"
+        );
+
+    items.forEach(
+        item =>
+            item.remove()
+    );
+
+    roomItems = [];
+
+    selectedItem = null;
+
+}
+
+
+/* SAVE ROOM */
+
+function saveRoom() {
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+    if (!room) return;
+
+    const items =
+        room.querySelectorAll(
+            ".draggable-item"
+        );
+
+    const saved = [];
+
+    items.forEach(
+        item => {
+
+            saved.push({
+
+                emoji:
+                    item.textContent,
+
+                name:
+                    item.dataset.name,
+
+                left:
+                    item.style.left,
+
+                top:
+                    item.style.top,
+
+                rotation:
+                    item.dataset.rotation,
+
+                scale:
+                    item.dataset.scale
+
+            });
+
+        }
+    );
+
+
+    localStorage.setItem(
+        "ellieRoom",
+        JSON.stringify(saved)
+    );
+
+
+    alert(
+        "🎀 Your room has been saved!"
+    );
+
+}
+
+
+/* LOAD ROOM */
+
+function loadRoom() {
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+    if (!room) return;
+
+    clearRoom();
+
+    const saved =
+        localStorage.getItem(
+            "ellieRoom"
+        );
+
+    if (!saved) {
+
+        alert(
+            "You don't have a saved room yet! 🌸"
+        );
+
+        return;
+
     }
+
+
+    const items =
+        JSON.parse(saved);
+
+
+    items.forEach(
+        data => {
+
+            itemCounter++;
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "draggable-item";
+
+            item.textContent =
+                data.emoji;
+
+            item.dataset.name =
+                data.name;
+
+            item.dataset.rotation =
+                data.rotation;
+
+            item.dataset.scale =
+                data.scale;
+
+            item.dataset.id =
+                itemCounter;
+
+            item.style.left =
+                data.left;
+
+            item.style.top =
+                data.top;
+
+            room.appendChild(item);
+
+            makeDraggable(item);
+
+            roomItems.push(item);
+
+        }
+    );
+
+
+    alert(
+        "🌷 Your room has been loaded!"
+    );
+
+}
+
+
+/* =====================================
+   ROOM THEMES
+===================================== */
+
+function changeTheme(theme) {
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+    if (!room) return;
+
+
+    room.classList.remove(
+
+        "room-pink",
+
+        "room-kawaii",
+
+        "room-cottage",
+
+        "room-fairy",
+
+        "room-y2k",
+
+        "room-gothic",
+
+        "room-cozy",
+
+        "room-academia",
+
+        "room-minimal",
+
+        "room-garden"
+
+    );
+
+
+    room.classList.add(
+        "room-" + theme
+    );
+
+
+    localStorage.setItem(
+        "ellieRoomTheme",
+        theme
+    );
+
+}
+
+
+/* LOAD THEME */
+
+function loadTheme() {
+
+    const room =
+        document.getElementById(
+            "room"
+        );
+
+    if (!room) return;
+
+    const saved =
+        localStorage.getItem(
+            "ellieRoomTheme"
+        );
+
+    if (saved) {
+
+        changeTheme(saved);
+
+    }
+
+}
+
+loadTheme();
+
+
+/* =====================================
+   CHARACTER
+===================================== */
+
+function changeCharacter(
+    character
+) {
+
+    const preview =
+        document.getElementById(
+            "character"
+        );
+
+    if (!preview) return;
+
+    preview.textContent =
+        character;
+
+    localStorage.setItem(
+        "ellieCharacter",
+        character
+    );
+
+}
+
+
+function loadCharacter() {
+
+    const saved =
+        localStorage.getItem(
+            "ellieCharacter"
+        );
+
+    const preview =
+        document.getElementById(
+            "character"
+        );
+
+    if (
+        saved &&
+        preview
+    ) {
+
+        preview.textContent =
+            saved;
+
+    }
+
+}
+
+loadCharacter();
+
+
+/* =====================================
+   GARDEN MESSAGE
+===================================== */
+
+function gardenMessage(
+    message
+) {
+
+    const box =
+        document.getElementById(
+            "gardenMessage"
+        );
+
+    if (!box) return;
+
+    box.textContent =
+        message;
+
+    setTimeout(
+        () => {
+
+            box.textContent = "";
+
+        },
+        3000
+    );
 
 }
