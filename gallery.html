@@ -8,7 +8,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Ellie's Gallery ♡</title>
+<title>Ellie's Garden ♡</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -33,70 +33,206 @@ content="width=device-width, initial-scale=1.0">
 <section>
 
 <h1 class="section-title">
-My Little Gallery 📸
+🌷 Ellie's Little Garden
 </h1>
 
-<div class="gallery">
+<p class="garden-intro">
 
-<div class="polaroid">
+Welcome to my little garden. 🌸
+Click the flowers to learn something about them.
 
-<div class="photo">
-🌸
-</div>
-
-<p>
-A pretty day
 </p>
 
+
+<!-- FLOWERS -->
+
+<div class="garden-grid">
+
+
+<button
+class="garden-flower"
+onclick="showFlower('🌹 Rose', 'Roses are one of the most widely recognized flowers in the world. They come in many colors and varieties.')">
+
+<span>🌹</span>
+
+<strong>
+Rose
+</strong>
+
+</button>
+
+
+<button
+class="garden-flower"
+onclick="showFlower('🌻 Sunflower', 'Sunflowers are members of the daisy family and are famous for their large golden flower heads.')">
+
+<span>🌻</span>
+
+<strong>
+Sunflower
+</strong>
+
+</button>
+
+
+<button
+class="garden-flower"
+onclick="showFlower('🌷 Tulip', 'Tulips are spring-blooming flowers that come in many colors and varieties.')">
+
+<span>🌷</span>
+
+<strong>
+Tulip
+</strong>
+
+</button>
+
+
+<button
+class="garden-flower"
+onclick="showFlower('🌸 Cherry Blossom', 'Cherry blossoms are especially famous in Japan, where they are known as sakura.')">
+
+<span>🌸</span>
+
+<strong>
+Cherry Blossom
+</strong>
+
+</button>
+
+
+<button
+class="garden-flower"
+onclick="showFlower('🌺 Hibiscus', 'Hibiscus flowers are especially common in tropical and subtropical regions.')">
+
+<span>🌺</span>
+
+<strong>
+Hibiscus
+</strong>
+
+</button>
+
+
+<button
+class="garden-flower"
+onclick="showFlower('🪻 Lavender', 'Lavender is known for its purple flowers and distinctive fragrance.')">
+
+<span>🪻</span>
+
+<strong>
+Lavender
+</strong>
+
+</button>
+
+
 </div>
 
 
-<div class="polaroid">
+<!-- FLOWER INFORMATION -->
 
-<div class="photo">
-🎀
-</div>
-
-<p>
-Little memories
-</p>
-
-</div>
-
-
-<div class="polaroid">
-
-<div class="photo">
-🌷
-</div>
-
-<p>
-Something beautiful
-</p>
-
-</div>
-
-</div>
-
-<br>
-
-<div class="card">
+<div
+class="flower-information"
+id="flowerInformation">
 
 <h2>
-📸 Adding your photos
+🌱 Choose a Flower
 </h2>
 
 <p>
-
-Later we'll add actual uploaded photos,
-click-to-enlarge images, categories and
-a proper scrapbook-style gallery.
-
+Click one of the flowers above to learn more about it.
 </p>
 
 </div>
 
+
+<!-- WATERING -->
+
+<div class="garden-card">
+
+<h2>
+💧 Water the Garden
+</h2>
+
+<p id="waterMessage">
+
+The flowers could use a little water. 🌱
+
+</p>
+
+<button
+class="button"
+onclick="waterGarden()">
+
+💧 Water Flowers
+
+</button>
+
+</div>
+
+
+<!-- GARDEN NOTE -->
+
+<div class="garden-note">
+
+<p>
+"Where flowers bloom, so does hope." 🌷
+</p>
+
+</div>
+
+
 </section>
+
+
+<footer>
+
+♡ Ellie ♡
+
+</footer>
+
+
+<script>
+
+function showFlower(name, information) {
+
+    const box =
+        document.getElementById(
+            "flowerInformation"
+        );
+
+
+    box.innerHTML = `
+
+        <h2>
+            ${name}
+        </h2>
+
+        <p>
+            ${information}
+        </p>
+
+    `;
+
+}
+
+
+function waterGarden() {
+
+    const message =
+        document.getElementById(
+            "waterMessage"
+        );
+
+
+    message.textContent =
+        "💧 The garden has been watered! The flowers are happy. 🌸";
+
+}
+
+</script>
+
 
 </body>
 
