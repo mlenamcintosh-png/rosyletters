@@ -12,9 +12,398 @@ content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="style.css">
 
+
+<style>
+
+/* =====================================
+   ROSY LETTERS PIXEL GARDEN
+===================================== */
+
+.rosy-garden-page {
+    max-width: 1050px;
+    margin: auto;
+    padding: 30px 20px 60px;
+}
+
+.garden-intro {
+    text-align: center;
+    color: #806b73;
+    margin-bottom: 25px;
+}
+
+
+/* STATUS */
+
+.pixel-garden-status {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px auto 30px;
+}
+
+.pixel-status-box {
+    background: #fffafa;
+    border: 1px solid #f0d8e1;
+    border-radius: 18px;
+    padding: 12px 20px;
+    color: #765963;
+    box-shadow: 0 4px 12px rgba(180, 100, 130, 0.08);
+}
+
+
+/* MAIN GARDEN */
+
+.pixel-garden {
+    max-width: 850px;
+    margin: 0 auto 35px;
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            rgba(255, 244, 247, 0.45),
+            rgba(231, 219, 197, 0.45)
+        ),
+        url("assets/garden/Pixel Art Flower Pack/Wooden garden grid/Wooden Grid 1 - PURPLE.png");
+
+    background-repeat: repeat;
+    background-size: 180px;
+
+    border: 3px solid #e9cbd7;
+    border-radius: 28px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(160, 95, 125, 0.15);
+}
+
+
+/* INDIVIDUAL GARDEN SPOTS */
+
+.pixel-plot {
+    min-height: 180px;
+
+    background:
+        rgba(255,255,255,0.82);
+
+    border:
+        2px dashed #dfb9c8;
+
+    border-radius: 22px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    padding: 15px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border .2s ease;
+}
+
+.pixel-plot:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 6px 15px
+        rgba(160, 95, 125, .15);
+}
+
+.pixel-plot.selected {
+    border:
+        3px solid #d98dab;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(217,141,171,.14);
+}
+
+
+.pixel-plant-image {
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+
+    margin-bottom: 8px;
+}
+
+
+.plot-name {
+    font-weight: bold;
+    color: #765963;
+    margin-top: 4px;
+}
+
+
+.plot-stage {
+    font-size: 13px;
+    color: #a07888;
+    margin-top: 4px;
+}
+
+
+/* CARDS */
+
+.pixel-garden-card {
+    max-width: 780px;
+
+    margin:
+        25px auto;
+
+    padding: 28px;
+
+    background: #fffafa;
+
+    border:
+        1px solid #f0d8e1;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 16px
+        rgba(160, 95, 125, .10);
+}
+
+.pixel-garden-card h2 {
+    color: #765963;
+}
+
+
+/* SEED CHOICES */
+
+.pixel-seeds {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 22px;
+}
+
+
+.pixel-seed {
+    border:
+        1px solid #eed6df;
+
+    border-radius: 18px;
+
+    background: #fff;
+
+    padding: 15px 10px;
+
+    cursor: pointer;
+
+    color: #765963;
+
+    font-family: inherit;
+
+    transition: .2s;
+}
+
+
+.pixel-seed:hover {
+    background: #fdeaf1;
+
+    transform:
+        translateY(-3px);
+}
+
+
+.pixel-seed.selected-seed {
+    background: #f9dce8;
+
+    border:
+        2px solid #d98dab;
+}
+
+
+.pixel-seed img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+
+    display: block;
+
+    margin:
+        0 auto 8px;
+}
+
+
+/* BUTTONS */
+
+.garden-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+
+.garden-action-button {
+    border: none;
+
+    background: #f3c9d9;
+
+    color: #765963;
+
+    padding:
+        11px 18px;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 14px;
+}
+
+
+.garden-action-button:hover {
+    background: #eeb8cd;
+}
+
+
+.remove-garden-button {
+    background: #f2e4e8;
+}
+
+
+/* MESSAGE */
+
+.garden-message {
+    max-width: 650px;
+
+    margin:
+        25px auto;
+
+    padding: 16px 20px;
+
+    text-align: center;
+
+    background: #fde8f0;
+
+    color: #765963;
+
+    border-radius: 18px;
+}
+
+
+/* COLLECTION */
+
+.flower-collection {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+
+.collection-flower {
+    background: #fff;
+
+    border:
+        1px solid #efd9e1;
+
+    border-radius: 16px;
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+
+.collection-flower img {
+    width: 60px;
+    height: 60px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+
+.collection-flower p {
+    margin:
+        5px 0 0;
+
+    color: #806b73;
+
+    font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+    .pixel-garden {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .pixel-seeds {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .flower-collection {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .pixel-garden {
+        grid-template-columns: 1fr;
+    }
+
+    .pixel-seeds {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+
 </head>
 
+
 <body>
+
 
 <nav>
 
@@ -30,340 +419,405 @@ content="width=device-width, initial-scale=1.0">
 </nav>
 
 
-<section>
+
+<main class="rosy-garden-page">
+
 
 <h1 class="section-title">
-🌷 Ellie's Little Garden
+Ellie's Little Pixel Garden
 </h1>
 
+
 <p class="garden-intro">
-A tiny garden that grows with a little love. ♡
+
+Choose a flower, plant it,
+water it and watch your little garden grow. ♡
+
 </p>
 
 
-<!-- STATUS -->
 
-<div class="garden-status">
+<!-- GARDEN STATS -->
+
+<div class="pixel-garden-status">
+
+<div class="pixel-status-box">
+
+Seeds:
+<strong id="seedCount">
+12
+</strong>
+
+</div>
+
+
+<div class="pixel-status-box">
+
+Growing:
+<strong id="growingCount">
+0
+</strong>
+
+</div>
+
+
+<div class="pixel-status-box">
+
+Bloomed:
+<strong id="bloomCount">
+0
+</strong>
+
+</div>
+
+
+<div class="pixel-status-box">
+
+Waterings:
+<strong id="waterCount">
+0
+</strong>
+
+</div>
+
+</div>
+
+
+
+<!-- ACTUAL GARDEN -->
 
 <div
-class="plant-spot"
-id="spot1"
-onclick="plantAtSpot(1)">
+class="pixel-garden"
+id="pixelGarden">
+
+
+<div
+class="pixel-plot"
+id="plot1"
+onclick="clickPlot(1)">
+</div>
+
+
+<div
+class="pixel-plot"
+id="plot2"
+onclick="clickPlot(2)">
+</div>
+
+
+<div
+class="pixel-plot"
+id="plot3"
+onclick="clickPlot(3)">
+</div>
+
+
+<div
+class="pixel-plot"
+id="plot4"
+onclick="clickPlot(4)">
+</div>
+
+
+<div
+class="pixel-plot"
+id="plot5"
+onclick="clickPlot(5)">
+</div>
+
+
+<div
+class="pixel-plot"
+id="plot6"
+onclick="clickPlot(6)">
+</div>
+
+
+</div>
+
+
+
+<!-- SEED BAG -->
+
+<div class="pixel-garden-card">
+
+
+<h2>
+Flower Seeds
+</h2>
+
+
+<p>
+
+Choose a flower below,
+then click an empty spot in the garden.
+
+</p>
+
+
+
+<div
+class="pixel-seeds"
+id="seedChoices">
+
+
+<!-- FLOWER 1 -->
+
+<button
+class="pixel-seed"
+onclick="chooseSeed(0, this)">
 
 <img
-src="assets/garden/Pixel Art Flower Pack/Flower 1/Flower 1 - BLUE.png"
-alt="Blue Flower"
-class="garden-flower">
+src="assets/garden/Pixel Art Flower Pack/Flower 1/Flower 1 - BLUE.png">
 
-</div>
+Bluebell
 
-<div>
-🌸 Flowers:
-<strong id="flowerCount">0</strong>
-</div>
-
-<div>
-💧 Water:
-<strong id="waterCount">0</strong>
-</div>
-
-<div>
-🏆 Achievements:
-<strong id="achievementCount">0</strong>
-</div>
-
-</div>
+</button>
 
 
-<!-- DAY / NIGHT -->
 
-<div class="garden-time">
+<!-- FLOWER 2 -->
 
-<span id="gardenTimeIcon">
-☀️
-</span>
+<button
+class="pixel-seed"
+onclick="chooseSeed(1, this)">
 
-<span id="gardenTimeText">
-Good morning!
-</span>
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 2/Flower 2 - PINK.png">
 
-</div>
+Pink Bloom
 
-
-<!-- GARDEN -->
-
-<div class="garden-area">
-
-<div class="garden-sky">
-
-<div class="sun"
-id="gardenSun">
-
-☀️
-
-</div>
+</button>
 
 
-<div class="moon"
-id="gardenMoon">
 
-🌙
+<!-- FLOWER 3 -->
 
-</div>
+<button
+class="pixel-seed"
+onclick="chooseSeed(2, this)">
 
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 3/Flower 3 - PURPLE.png">
 
-<div class="cloud cloud-one">
-☁️
-</div>
+Purple Daisy
 
-<div class="cloud cloud-two">
-☁️
-</div>
+</button>
 
 
-<div
-class="butterfly butterfly-one">
 
-🦋
+<!-- FLOWER 4 -->
 
-</div>
+<button
+class="pixel-seed"
+onclick="chooseSeed(3, this)">
 
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 4/Flower 4 - PINK.png">
 
-<div
-class="butterfly butterfly-two">
+Rosy Tulip
 
-🦋
-
-</div>
-
-
-<div
-class="bee">
-
-🐝
-
-</div>
-
-</div>
+</button>
 
 
-<div class="garden-ground">
 
-<div
-class="plant-spot"
-id="spot1"
-onclick="plantAtSpot(1)">
+<!-- FLOWER 5 -->
 
-🌱
+<button
+class="pixel-seed"
+onclick="chooseSeed(4, this)">
 
-</div>
+<img
+src="assets/garden/Pixel Art Flower Pack/FLower 5/Flower 5 - PINK.png">
 
+Pink Star
 
-<div
-class="plant-spot"
-id="spot2"
-onclick="plantAtSpot(2)">
-
-🌱
-
-</div>
+</button>
 
 
-<div
-class="plant-spot"
-id="spot3"
-onclick="plantAtSpot(3)">
 
-🌱
+<!-- FLOWER 6 -->
 
-</div>
+<button
+class="pixel-seed"
+onclick="chooseSeed(5, this)">
 
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 6/Flower 6 - PURPLE.png">
 
-<div
-class="plant-spot"
-id="spot4"
-onclick="plantAtSpot(4)">
+Purple Blossom
 
-🌱
-
-</div>
+</button>
 
 
-<div
-class="plant-spot"
-id="spot5"
-onclick="plantAtSpot(5)">
 
-🌱
+<!-- FLOWER 7 -->
+
+<button
+class="pixel-seed"
+onclick="chooseSeed(6, this)">
+
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 7/Flower 7 - PINK.png">
+
+Sweet Pink
+
+</button>
+
+
+
+<!-- FLOWER 8 -->
+
+<button
+class="pixel-seed"
+onclick="chooseSeed(7, this)">
+
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 8/Flower 8 - YELLOW.png">
+
+Golden Bloom
+
+</button>
+
+
+
+<!-- FLOWER 10 -->
+
+<button
+class="pixel-seed"
+onclick="chooseSeed(8, this)">
+
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 10/Flower 10 - PINK.png">
+
+Rosebud
+
+</button>
+
+
+
+<!-- FLOWER 13 -->
+
+<button
+class="pixel-seed"
+onclick="chooseSeed(9, this)">
+
+<img
+src="assets/garden/Pixel Art Flower Pack/Flower 13/Flower 13 - COLORFUL.png">
+
+Rainbow Flower
+
+</button>
+
 
 </div>
 
 
-<div
-class="plant-spot"
-id="spot6"
-onclick="plantAtSpot(6)">
+<p id="selectedSeedText">
 
-🌱
+No flower selected yet.
 
-</div>
+</p>
 
-</div>
 
 </div>
 
 
-<!-- SEEDS -->
 
-<div class="garden-card">
+<!-- GARDEN CARE -->
+
+<div class="pixel-garden-card">
+
 
 <h2>
-🌱 Seed Bag
+Garden Care
 </h2>
 
-<p>
-Choose a seed and then click an empty spot.
+
+<p id="selectedPlantText">
+
+Click one of your planted flowers
+to take care of it.
+
 </p>
 
 
-<div class="seed-options">
+<div class="garden-actions">
 
 
-<button onclick="chooseSeed('🌹','Rose')">
-🌹 Rose
+<button
+class="garden-action-button"
+onclick="waterPlant()">
+
+Water
+
 </button>
 
 
-<button onclick="chooseSeed('🌻','Sunflower')">
-🌻 Sunflower
+<button
+class="garden-action-button"
+onclick="renamePlant()">
+
+Rename
+
 </button>
 
 
-<button onclick="chooseSeed('🌷','Tulip')">
-🌷 Tulip
-</button>
+<button
+class="garden-action-button remove-garden-button"
+onclick="removePlant()">
 
+Remove
 
-<button onclick="chooseSeed('🌸','Cherry Blossom')">
-🌸 Cherry Blossom
-</button>
-
-
-<button onclick="chooseSeed('🌺','Hibiscus')">
-🌺 Hibiscus
-</button>
-
-
-<button onclick="chooseSeed('🪻','Lavender')">
-🪻 Lavender
-</button>
-
-
-<button onclick="chooseSeed('✨','Starlight Flower')">
-✨ Rare Flower
 </button>
 
 
 </div>
 
 
-<p id="selectedSeed">
-No seed selected.
-</p>
-
 </div>
 
-
-<!-- CARE -->
-
-<div
-class="garden-card"
-id="flowerActions">
-
-<h2>
-🌿 Garden Care
-</h2>
-
-<p>
-Select one of your flowers first.
-</p>
-
-
-<button
-class="button"
-onclick="waterSelected()">
-
-💧 Water
-
-</button>
-
-
-<button
-class="button"
-onclick="renameSelected()">
-
-🏷️ Rename
-
-</button>
-
-
-<button
-class="button"
-onclick="removeSelected()">
-
-🗑️ Remove
-
-</button>
-
-</div>
 
 
 <!-- COLLECTION -->
 
-<div class="garden-card">
+<div class="pixel-garden-card">
+
 
 <h2>
-📖 Flower Collection
+My Flower Collection
 </h2>
 
-<div
-class="collection"
-id="collection">
 
-</div>
+<p>
 
-</div>
+Flowers you have successfully grown
+will appear here.
 
+</p>
 
-<!-- ACHIEVEMENTS -->
-
-<div class="garden-card">
-
-<h2>
-🏆 Garden Achievements
-</h2>
 
 <div
-id="achievements"
-class="achievements">
-
-</div>
-
+class="flower-collection"
+id="flowerCollection">
 </div>
 
 
-<!-- MESSAGE -->
+</div>
+
+
 
 <div
 class="garden-message"
 id="gardenMessage">
 
-🌸 Welcome to your garden!
+Welcome to your new pixel garden. ♡
 
 </div>
 
 
-</section>
+</main>
+
 
 
 <footer>
@@ -373,100 +827,264 @@ id="gardenMessage">
 </footer>
 
 
+
 <script>
 
-/* ---------- GARDEN DATA ---------- */
 
-let gardenData =
+/* =====================================
+   FLOWER ASSETS
+===================================== */
+
+const flowerTypes = [
+
+{
+    name: "Bluebell",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 1/Flower 1 - BLUE.png"
+},
+
+
+{
+    name: "Pink Bloom",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 2/Flower 2 - PINK.png"
+},
+
+
+{
+    name: "Purple Daisy",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 3/Flower 3 - PURPLE.png"
+},
+
+
+{
+    name: "Rosy Tulip",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 4/Flower 4 - PINK.png"
+},
+
+
+{
+    name: "Pink Star",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/FLower 5/Flower 5 - PINK.png"
+},
+
+
+{
+    name: "Purple Blossom",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 6/Flower 6 - PURPLE.png"
+},
+
+
+{
+    name: "Sweet Pink",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 7/Flower 7 - PINK.png"
+},
+
+
+{
+    name: "Golden Bloom",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 8/Flower 8 - YELLOW.png"
+},
+
+
+{
+    name: "Rosebud",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 10/Flower 10 - PINK.png"
+},
+
+
+{
+    name: "Rainbow Flower",
+
+    image:
+    "assets/garden/Pixel Art Flower Pack/Flower 13/Flower 13 - COLORFUL.png"
+}
+
+];
+
+
+
+/* =====================================
+   GROWTH STAGE IMAGES
+===================================== */
+
+const seedImage =
+"assets/garden/Pixel Art Flower Pack/Empty Flower Pots/Flower Pot 1 - YELLOW.png";
+
+
+const growingImage =
+"assets/garden/Pixel Art Flower Pack/Bush 1 (No Flowers)/Bush 1 (no flowers) - WARM GREEN.png";
+
+
+
+/* =====================================
+   SAVE DATA
+===================================== */
+
+let garden =
 JSON.parse(
-localStorage.getItem(
-"ellieGardenV3"
+    localStorage.getItem(
+        "rosyPixelGarden"
+    )
 )
-) || {
+||
+{
 
-    seeds: 6,
+    seeds: 12,
 
-    totalWater: 0,
+    waterings: 0,
 
     selectedSeed: null,
 
-    selectedSeedName: null,
+    selectedPlot: null,
 
-    selectedSpot: null,
+    plots: {},
 
-    spots: {},
-
-    collection: [],
-
-    achievements: []
+    collection: []
 
 };
 
 
-/* ---------- SAVE ---------- */
 
 function saveGarden() {
 
     localStorage.setItem(
-        "ellieGardenV3",
-        JSON.stringify(gardenData)
+        "rosyPixelGarden",
+        JSON.stringify(garden)
     );
 
 }
 
 
-/* ---------- SEED ---------- */
+
+/* =====================================
+   CHOOSE A FLOWER
+===================================== */
 
 function chooseSeed(
-    emoji,
-    name
+    flowerIndex,
+    button
 ) {
 
-    gardenData.selectedSeed =
-        emoji;
+    garden.selectedSeed =
+        flowerIndex;
 
-    gardenData.selectedSeedName =
-        name;
+
+    document
+    .querySelectorAll(
+        ".pixel-seed"
+    )
+    .forEach(
+        function(item) {
+
+            item.classList.remove(
+                "selected-seed"
+            );
+
+        }
+    );
+
+
+    button.classList.add(
+        "selected-seed"
+    );
+
+
+    const flower =
+        flowerTypes[
+            flowerIndex
+        ];
+
 
     document.getElementById(
-        "selectedSeed"
+        "selectedSeedText"
     ).textContent =
-        "Selected: " +
-        emoji +
-        " " +
-        name +
-        " — choose an empty spot! 🌱";
+        flower.name +
+        " selected. Now click an empty garden spot.";
+
+
+    saveGarden();
 
 }
 
 
-/* ---------- PLANT ---------- */
 
-function plantAtSpot(
-    spotNumber
+/* =====================================
+   CLICK A GARDEN PLOT
+===================================== */
+
+function clickPlot(
+    plotNumber
 ) {
 
+
+    /* SELECT EXISTING PLANT */
+
     if (
-        gardenData.spots[
-            spotNumber
+        garden.plots[
+            plotNumber
         ]
     ) {
 
-        selectPlant(
-            spotNumber
+        garden.selectedPlot =
+            plotNumber;
+
+
+        garden.selectedSeed =
+            null;
+
+
+        document
+        .querySelectorAll(
+            ".pixel-seed"
+        )
+        .forEach(
+            function(item) {
+
+                item.classList.remove(
+                    "selected-seed"
+                );
+
+            }
         );
+
+
+        showPlantInformation();
+
+
+        updateGarden();
+
 
         return;
 
     }
 
 
+
+    /* NEED SEED */
+
     if (
-        !gardenData.selectedSeed
+        garden.selectedSeed === null
     ) {
 
         showMessage(
-            "Choose a seed first! 🌱"
+            "Choose a flower first, then click an empty plot."
         );
 
         return;
@@ -474,12 +1092,15 @@ function plantAtSpot(
     }
 
 
+
+    /* OUT OF SEEDS */
+
     if (
-        gardenData.seeds <= 0
+        garden.seeds <= 0
     ) {
 
         showMessage(
-            "You're out of seeds! 🌱"
+            "Your seed bag is empty."
         );
 
         return;
@@ -487,67 +1108,71 @@ function plantAtSpot(
     }
 
 
-    gardenData.spots[
-        spotNumber
-    ] = {
 
-        flower:
-            gardenData.selectedSeed,
+    /* PLANT FLOWER */
 
-        flowerName:
-            gardenData.selectedSeedName,
+    const flowerIndex =
+        garden.selectedSeed;
+
+
+    garden.plots[
+        plotNumber
+    ] =
+    {
+
+        type:
+            flowerIndex,
 
         nickname:
-            gardenData.selectedSeedName,
+            flowerTypes[
+                flowerIndex
+            ].name,
 
-        growth: 0,
+        water:
+            0,
 
-        water: 0
+        stage:
+            0
 
     };
 
 
-    gardenData.seeds--;
+    garden.seeds--;
 
 
-    if (
-        !gardenData.collection
-        .includes(
-            gardenData.selectedSeedName
-        )
-    ) {
+    garden.selectedPlot =
+        plotNumber;
 
-        gardenData.collection
-            .push(
-                gardenData.selectedSeedName
+
+    garden.selectedSeed =
+        null;
+
+
+    document
+    .querySelectorAll(
+        ".pixel-seed"
+    )
+    .forEach(
+        function(item) {
+
+            item.classList.remove(
+                "selected-seed"
             );
 
-    }
-
-
-    gardenData.selectedSpot =
-        spotNumber;
-
-
-    gardenData.selectedSeed =
-        null;
-
-    gardenData.selectedSeedName =
-        null;
-
-
-    document.getElementById(
-        "selectedSeed"
-    ).textContent =
-        "Your flower has been planted! 🌱";
-
-
-    showMessage(
-        "A tiny flower has joined your garden! 🌸"
+        }
     );
 
 
-    checkAchievements();
+    document.getElementById(
+        "selectedSeedText"
+    ).textContent =
+        "Your flower has been planted.";
+
+
+    showMessage(
+        "Your new seed has been planted. Give it some water!"
+    );
+
 
     saveGarden();
 
@@ -556,47 +1181,26 @@ function plantAtSpot(
 }
 
 
-/* ---------- SELECT ---------- */
 
-function selectPlant(
-    spotNumber
-) {
+/* =====================================
+   WATER
+===================================== */
 
-    gardenData.selectedSpot =
-        spotNumber;
+function waterPlant() {
 
-
-    const plant =
-        gardenData.spots[
-            spotNumber
-        ];
+    const selected =
+        garden.selectedPlot;
 
 
-    showMessage(
-        plant.flower +
-        " " +
-        plant.nickname +
-        " is selected. 💗"
-    );
-
-
-    updateGarden();
-
-}
-
-
-/* ---------- WATER ---------- */
-
-function waterSelected() {
-
-    const spot =
-        gardenData.selectedSpot;
-
-
-    if (!spot) {
+    if (
+        selected === null ||
+        !garden.plots[
+            selected
+        ]
+    ) {
 
         showMessage(
-            "Choose a flower first. 🌸"
+            "Select one of your plants first."
         );
 
         return;
@@ -605,43 +1209,63 @@ function waterSelected() {
 
 
     const plant =
-        gardenData.spots[
-            spot
+        garden.plots[
+            selected
         ];
-
-
-    if (!plant) return;
 
 
     plant.water++;
 
-    gardenData.totalWater++;
+
+    garden.waterings++;
+
+
+
+    /*
+       0 waters = seed
+       2 waters = growing
+       4 waters = flower
+    */
 
 
     if (
-        plant.water % 2 === 0 &&
-        plant.growth < 3
+        plant.water >= 4
     ) {
 
-        plant.growth++;
+        plant.stage = 2;
+
+    }
+
+    else if (
+        plant.water >= 2
+    ) {
+
+        plant.stage = 1;
 
     }
 
 
+
     if (
-        plant.growth >= 2
+        plant.stage === 2
     ) {
 
+        const flowerName =
+            flowerTypes[
+                plant.type
+            ].name;
+
+
         if (
-            !gardenData.collection
+            !garden.collection
             .includes(
-                plant.flowerName
+                flowerName
             )
         ) {
 
-            gardenData.collection
+            garden.collection
                 .push(
-                    plant.flowerName
+                    flowerName
                 );
 
         }
@@ -650,33 +1274,40 @@ function waterSelected() {
 
 
     showMessage(
-        "💧 " +
         plant.nickname +
-        " has been watered!"
+        " has been watered."
     );
 
-
-    checkAchievements();
 
     saveGarden();
 
     updateGarden();
 
+    showPlantInformation();
+
 }
 
 
-/* ---------- RENAME ---------- */
 
-function renameSelected() {
+/* =====================================
+   RENAME
+===================================== */
 
-    const spot =
-        gardenData.selectedSpot;
+function renamePlant() {
+
+    const selected =
+        garden.selectedPlot;
 
 
-    if (!spot) {
+    if (
+        selected === null ||
+        !garden.plots[
+            selected
+        ]
+    ) {
 
         showMessage(
-            "Choose a flower first. 🌸"
+            "Select a plant first."
         );
 
         return;
@@ -685,54 +1316,63 @@ function renameSelected() {
 
 
     const plant =
-        gardenData.spots[
-            spot
+        garden.plots[
+            selected
         ];
 
 
-    const newName =
+    const name =
         prompt(
-            "What would you like to call your flower?"
+            "What would you like to name your flower?",
+            plant.nickname
         );
 
 
     if (
-        newName &&
-        newName.trim()
+        name &&
+        name.trim()
     ) {
 
         plant.nickname =
-            newName.trim();
-
-
-        showMessage(
-            "Your flower is now called " +
-            plant.nickname +
-            "! 🎀"
-        );
+            name.trim();
 
 
         saveGarden();
 
         updateGarden();
 
+        showPlantInformation();
+
+
+        showMessage(
+            "Your flower has a new name."
+        );
+
     }
 
 }
 
 
-/* ---------- REMOVE ---------- */
 
-function removeSelected() {
+/* =====================================
+   REMOVE PLANT
+===================================== */
 
-    const spot =
-        gardenData.selectedSpot;
+function removePlant() {
+
+    const selected =
+        garden.selectedPlot;
 
 
-    if (!spot) {
+    if (
+        selected === null ||
+        !garden.plots[
+            selected
+        ]
+    ) {
 
         showMessage(
-            "Choose a flower first. 🌸"
+            "Select a plant first."
         );
 
         return;
@@ -740,29 +1380,27 @@ function removeSelected() {
     }
 
 
-    if (
-        gardenData.spots[
-            spot
-        ]
-    ) {
-
-        delete gardenData.spots[
-            spot
-        ];
+    delete garden.plots[
+        selected
+    ];
 
 
-        gardenData.seeds++;
+    garden.seeds++;
 
 
-        gardenData.selectedSpot =
-            null;
+    garden.selectedPlot =
+        null;
 
 
-        showMessage(
-            "The garden spot is ready for something new. 🌱"
-        );
+    document.getElementById(
+        "selectedPlantText"
+    ).textContent =
+        "Click one of your planted flowers to take care of it.";
 
-    }
+
+    showMessage(
+        "The plot is empty again."
+    );
 
 
     saveGarden();
@@ -772,52 +1410,121 @@ function removeSelected() {
 }
 
 
-/* ---------- FLOWER DISPLAY ---------- */
 
-function getFlowerDisplay(
-    plant
-) {
+/* =====================================
+   PLANT INFORMATION
+===================================== */
+
+function showPlantInformation() {
+
+    const selected =
+        garden.selectedPlot;
+
 
     if (
-        plant.growth === 0
+        selected === null
     ) {
 
-        return "🌱";
+        return;
+
+    }
+
+
+    const plant =
+        garden.plots[
+            selected
+        ];
+
+
+    if (!plant) {
+
+        return;
+
+    }
+
+
+    let stageText =
+        "Seed planted";
+
+
+    if (
+        plant.stage === 1
+    ) {
+
+        stageText =
+            "Growing";
 
     }
 
 
     if (
-        plant.growth === 1
+        plant.stage === 2
     ) {
 
-        return "🌿";
+        stageText =
+            "Fully bloomed";
 
     }
 
 
-    if (
-        plant.growth === 2
-    ) {
-
-        return plant.flower;
-
-    }
-
-
-    return (
-        plant.flower +
-        "✨"
-    );
+    document.getElementById(
+        "selectedPlantText"
+    ).textContent =
+        plant.nickname +
+        " — " +
+        stageText +
+        " — watered " +
+        plant.water +
+        " time(s).";
 
 }
 
 
-/* ---------- UPDATE ---------- */
+
+/* =====================================
+   GET PLANT IMAGE
+===================================== */
+
+function getPlantImage(
+    plant
+) {
+
+    if (
+        plant.stage === 0
+    ) {
+
+        return seedImage;
+
+    }
+
+
+    if (
+        plant.stage === 1
+    ) {
+
+        return growingImage;
+
+    }
+
+
+    return flowerTypes[
+        plant.type
+    ].image;
+
+}
+
+
+
+/* =====================================
+   UPDATE GARDEN DISPLAY
+===================================== */
 
 function updateGarden() {
 
-    let flowerCount = 0;
+
+    let growing = 0;
+
+    let bloomed = 0;
 
 
     for (
@@ -826,71 +1533,174 @@ function updateGarden() {
         i++
     ) {
 
-        const spot =
+
+        const plot =
             document.getElementById(
-                "spot" + i
+                "plot" + i
             );
 
 
         const plant =
-            gardenData.spots[
+            garden.plots[
                 i
             ];
 
 
-        if (plant) {
-
-            spot.textContent =
-                getFlowerDisplay(
-                    plant
-                );
+        plot.innerHTML = "";
 
 
-            spot.classList.add(
-                "planted"
-            );
+        plot.classList.remove(
+            "selected"
+        );
 
 
-            if (
-                gardenData.selectedSpot
-                === i
-            ) {
 
-                spot.classList.add(
-                    "selected"
-                );
+        /* EMPTY */
 
-            }
+        if (!plant) {
 
-            else {
+            plot.innerHTML = `
 
-                spot.classList.remove(
-                    "selected"
-                );
+                <div
+                style="
+                color:#b38c9a;
+                text-align:center;
+                font-size:14px;
+                ">
 
-            }
+                    Empty plot
+
+                </div>
+
+            `;
+
+            continue;
+
+        }
 
 
-            if (
-                plant.growth >= 2
-            ) {
 
-                flowerCount++;
+        /* COUNTERS */
 
-            }
+        if (
+            plant.stage < 2
+        ) {
+
+            growing++;
 
         }
 
         else {
 
-            spot.textContent =
-                "🌱";
+            bloomed++;
 
-            spot.classList.remove(
-                "planted"
+        }
+
+
+
+        /* IMAGE */
+
+        const image =
+            document.createElement(
+                "img"
             );
 
-            spot.classList.remove(
+
+        image.src =
+            getPlantImage(
+                plant
+            );
+
+
+        image.className =
+            "pixel-plant-image";
+
+
+        image.alt =
+            plant.nickname;
+
+
+
+        /* NAME */
+
+        const name =
+            document.createElement(
+                "div"
+            );
+
+
+        name.className =
+            "plot-name";
+
+
+        name.textContent =
+            plant.nickname;
+
+
+
+        /* STAGE */
+
+        const stage =
+            document.createElement(
+                "div"
+            );
+
+
+        stage.className =
+            "plot-stage";
+
+
+        if (
+            plant.stage === 0
+        ) {
+
+            stage.textContent =
+                "Seed planted";
+
+        }
+
+
+        else if (
+            plant.stage === 1
+        ) {
+
+            stage.textContent =
+                "Growing";
+
+        }
+
+
+        else {
+
+            stage.textContent =
+                "Fully bloomed";
+
+        }
+
+
+
+        plot.appendChild(
+            image
+        );
+
+
+        plot.appendChild(
+            name
+        );
+
+
+        plot.appendChild(
+            stage
+        );
+
+
+
+        if (
+            garden.selectedPlot
+            === i
+        ) {
+
+            plot.classList.add(
                 "selected"
             );
 
@@ -899,360 +1709,172 @@ function updateGarden() {
     }
 
 
+
     document.getElementById(
         "seedCount"
     ).textContent =
-        gardenData.seeds;
+        garden.seeds;
 
 
     document.getElementById(
-        "flowerCount"
+        "growingCount"
     ).textContent =
-        flowerCount;
+        growing;
+
+
+    document.getElementById(
+        "bloomCount"
+    ).textContent =
+        bloomed;
 
 
     document.getElementById(
         "waterCount"
     ).textContent =
-        gardenData.totalWater;
+        garden.waterings;
+
 
 
     updateCollection();
 
-    updateAchievements();
-
 }
 
 
-/* ---------- COLLECTION ---------- */
+
+/* =====================================
+   COLLECTION
+===================================== */
 
 function updateCollection() {
 
-    const box =
+
+    const container =
         document.getElementById(
-            "collection"
+            "flowerCollection"
         );
 
 
-    box.innerHTML = "";
+    container.innerHTML = "";
 
 
     if (
-        gardenData.collection.length
+        garden.collection.length
         === 0
     ) {
 
-        box.innerHTML =
-            "<p>No flowers discovered yet. 🌱</p>";
+        container.innerHTML = `
+
+            <p
+            style="
+            grid-column:1/-1;
+            color:#9a7885;
+            ">
+
+                Grow your first flower
+                to start your collection.
+
+            </p>
+
+        `;
+
 
         return;
 
     }
 
 
-    gardenData.collection
-        .forEach(
-            function(flower) {
 
-                const item =
-                    document.createElement(
-                        "div"
-                    );
+    garden.collection.forEach(
 
-                item.className =
-                    "collection-item";
+        function(
+            flowerName
+        ) {
 
-                item.textContent =
-                    "🌸 " +
-                    flower;
 
-                box.appendChild(
-                    item
+            const flower =
+                flowerTypes.find(
+
+                    function(item) {
+
+                        return (
+                            item.name
+                            ===
+                            flowerName
+                        );
+
+                    }
+
                 );
 
+
+            if (!flower) {
+
+                return;
+
             }
-        );
-
-}
 
 
-/* ---------- ACHIEVEMENTS ---------- */
 
-function checkAchievements() {
-
-    const achievements = [];
-
-
-    const plants =
-        Object.values(
-            gardenData.spots
-        );
-
-
-    if (
-        plants.length >= 1
-    ) {
-
-        achievements.push(
-            "🌱 First Flower"
-        );
-
-    }
-
-
-    if (
-        gardenData.totalWater >= 5
-    ) {
-
-        achievements.push(
-            "💧 Little Gardener"
-        );
-
-    }
-
-
-    if (
-        plants.length >= 3
-    ) {
-
-        achievements.push(
-            "🌷 Garden Starter"
-        );
-
-    }
-
-
-    if (
-        plants.length >= 6
-    ) {
-
-        achievements.push(
-            "🌸 Full Garden"
-        );
-
-    }
-
-
-    if (
-        gardenData.collection.length
-        >= 5
-    ) {
-
-        achievements.push(
-            "📖 Flower Collector"
-        );
-
-    }
-
-
-    const rare =
-        plants.some(
-            function(plant) {
-
-                return (
-                    plant.flowerName
-                    ===
-                    "Starlight Flower"
+            const card =
+                document.createElement(
+                    "div"
                 );
 
-            }
-        );
+
+            card.className =
+                "collection-flower";
 
 
-    if (rare) {
+            card.innerHTML = `
 
-        achievements.push(
-            "✨ Rare Discovery"
-        );
+                <img
+                src="${flower.image}"
+                alt="${flower.name}">
 
-    }
+                <p>
 
+                    ${flower.name}
 
-    gardenData.achievements =
-        achievements;
+                </p>
 
-
-    saveGarden();
-
-}
+            `;
 
 
-/* ---------- DISPLAY ACHIEVEMENTS ---------- */
+            container.appendChild(
+                card
+            );
 
-function updateAchievements() {
+        }
 
-    const box =
-        document.getElementById(
-            "achievements"
-        );
-
-
-    box.innerHTML = "";
-
-
-    if (
-        gardenData.achievements
-        .length === 0
-    ) {
-
-        box.innerHTML =
-            "<p>Your first achievement is waiting! 🌱</p>";
-
-        return;
-
-    }
-
-
-    gardenData.achievements
-        .forEach(
-            function(achievement) {
-
-                const item =
-                    document.createElement(
-                        "div"
-                    );
-
-                item.className =
-                    "achievement";
-
-                item.textContent =
-                    achievement;
-
-                box.appendChild(
-                    item
-                );
-
-            }
-        );
-
-
-    document.getElementById(
-        "achievementCount"
-    ).textContent =
-        gardenData
-        .achievements.length;
+    );
 
 }
 
 
-/* ---------- DAY / NIGHT ---------- */
 
-function updateTime() {
-
-    const hour =
-        new Date().getHours();
-
-
-    const sky =
-        document.querySelector(
-            ".garden-sky"
-        );
-
-
-    const sun =
-        document.getElementById(
-            "gardenSun"
-        );
-
-
-    const moon =
-        document.getElementById(
-            "gardenMoon"
-        );
-
-
-    const icon =
-        document.getElementById(
-            "gardenTimeIcon"
-        );
-
-
-    const text =
-        document.getElementById(
-            "gardenTimeText"
-        );
-
-
-    if (
-        hour >= 6 &&
-        hour < 18
-    ) {
-
-        sky.classList.remove(
-            "night"
-        );
-
-
-        sun.style.display =
-            "block";
-
-
-        moon.style.display =
-            "none";
-
-
-        icon.textContent =
-            "☀️";
-
-
-        text.textContent =
-            "The garden is enjoying the sunshine!";
-
-    }
-
-    else {
-
-        sky.classList.add(
-            "night"
-        );
-
-
-        sun.style.display =
-            "none";
-
-
-        moon.style.display =
-            "block";
-
-
-        icon.textContent =
-            "🌙";
-
-
-        text.textContent =
-            "Good evening, little garden.";
-
-    }
-
-}
-
-
-/* ---------- MESSAGE ---------- */
+/* =====================================
+   MESSAGE
+===================================== */
 
 function showMessage(
-    message
+    text
 ) {
 
     document.getElementById(
         "gardenMessage"
     ).textContent =
-        message;
+        text;
 
 }
 
 
-/* ---------- START ---------- */
 
-checkAchievements();
+/* =====================================
+   START
+===================================== */
 
 updateGarden();
 
-updateTime();
-
-setInterval(
-    updateTime,
-    60000
-);
 
 </script>
 
