@@ -1679,3 +1679,7 @@ function newFlowerFact() {
     const randomIndex = Math.floor(Math.random() * flowerFacts.length);
     document.getElementById("flowerFact").textContent = flowerFacts[randomIndex];
 }
+function newFlowerFact() {
+    document.getElementById("flowerFact").textContent =
+        "🌸 IT WORKS!";
+}
