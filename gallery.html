@@ -12,9 +12,161 @@ content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+/* ==========================
+   ROSY LETTERS GALLERY
+========================== */
+
+.gallery-page {
+    max-width: 1050px;
+    margin: auto;
+    padding: 30px 20px 60px;
+}
+
+.gallery-intro {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: #806b73;
+    line-height: 1.7;
+}
+
+.gallery-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.gallery-tag {
+    padding: 8px 14px;
+    border-radius: 18px;
+    background: #fce8ef;
+    border: 1px solid #f1d9e2;
+    color: #765963;
+    font-size: 13px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.polaroid {
+    background: #fffdfd;
+    padding: 14px 14px 22px;
+    border-radius: 8px;
+    box-shadow:
+        0 7px 18px
+        rgba(160, 95, 125, 0.13);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.polaroid:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.polaroid:hover {
+    transform: translateY(-5px) rotate(0deg);
+    box-shadow:
+        0 10px 22px
+        rgba(160, 95, 125, 0.18);
+}
+
+.photo {
+    width: 100%;
+    height: 230px;
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f5,
+            #f8dce7
+        );
+    border: 1px dashed #dcaec0;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #b47d92;
+    font-size: 35px;
+}
+
+.polaroid p {
+    text-align: center;
+    color: #765963;
+    margin: 15px 5px 0;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.gallery-note {
+    max-width: 700px;
+    margin: 50px auto 0;
+    padding: 25px;
+    text-align: center;
+    background: #fffafa;
+    border: 1px solid #f1d9e2;
+    border-radius: 20px;
+    box-shadow:
+        0 5px 15px
+        rgba(160, 95, 125, 0.09);
+}
+
+.gallery-note h2 {
+    color: #765963;
+}
+
+.gallery-note p {
+    color: #806b73;
+    line-height: 1.7;
+}
+
+.gallery-quote {
+    max-width: 600px;
+    margin: 30px auto 0;
+    padding: 18px;
+    text-align: center;
+    color: #8b5c6e;
+    background: #fce8ef;
+    border-radius: 22px;
+}
+
+@media (max-width: 750px) {
+
+    .gallery {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
 </head>
 
+
 <body>
+
 
 <nav>
 
@@ -30,12 +182,44 @@ content="width=device-width, initial-scale=1.0">
 </nav>
 
 
-<section>
+<main class="gallery-page">
+
 
 <h1 class="section-title">
 My Little Gallery 📸
 </h1>
 
+
+<p class="gallery-intro">
+
+A little scrapbook for photos, memories,
+pretty places and things I want to keep. ♡
+
+</p>
+
+
+<div class="gallery-tags">
+
+<span class="gallery-tag">
+🌸 Memories
+</span>
+
+<span class="gallery-tag">
+🎀 Pretty Things
+</span>
+
+<span class="gallery-tag">
+🌷 Nature
+</span>
+
+<span class="gallery-tag">
+☁️ Little Moments
+</span>
+
+</div>
+
+
+<!-- GALLERY -->
 
 <div class="gallery">
 
@@ -43,15 +227,11 @@ My Little Gallery 📸
 <div class="polaroid">
 
 <div class="photo">
-
-<img
-src="https://i.pinimg.com/736x/f5/f4/16/f5f416218b196733430595939b8e608c.jpg"
-alt="Gallery photo">
-
+♡
 </div>
 
 <p>
-A pretty day ♡
+A pretty day
 </p>
 
 </div>
@@ -60,15 +240,11 @@ A pretty day ♡
 <div class="polaroid">
 
 <div class="photo">
-
-<img
-src="https://i.pinimg.com/736x/cf/25/96/cf25969ea5589ea1d8a65735fea7af18.jpg"
-alt="Gallery photo">
-
+♡
 </div>
 
 <p>
-Little memories 🎀
+Little memories
 </p>
 
 </div>
@@ -77,15 +253,50 @@ Little memories 🎀
 <div class="polaroid">
 
 <div class="photo">
-
-<img
-src="https://i.pinimg.com/736x/18/c3/57/18c357a1913f8bca342c62c674d9a983.jpg"
-alt="Gallery photo">
-
+♡
 </div>
 
 <p>
-Something beautiful 🌷
+Something beautiful
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+♡
+</div>
+
+<p>
+A moment worth keeping
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+♡
+</div>
+
+<p>
+Pretty little things
+</p>
+
+</div>
+
+
+<div class="polaroid">
+
+<div class="photo">
+♡
+</div>
+
+<p>
+One for the scrapbook
 </p>
 
 </div>
@@ -94,28 +305,39 @@ Something beautiful 🌷
 </div>
 
 
-<br>
+<!-- NOTE -->
 
-
-<div class="card">
+<div class="gallery-note">
 
 <h2>
-📸 My Memories
+📸 Photos Coming Soon
 </h2>
 
 <p>
-A little collection of pretty things,
-memories and moments I want to keep. ♡
+
+This gallery is still growing.
+I'll eventually fill these little polaroids
+with photos, memories and favorite moments.
+
 </p>
 
 </div>
 
 
-</section>
+<div class="gallery-quote">
+
+♡ Some moments deserve their own little place to stay. ♡
+
+</div>
+
+
+</main>
 
 
 <footer>
+
 ♡ Ellie ♡
+
 </footer>
 
 
