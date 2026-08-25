@@ -1599,3 +1599,110 @@ if (flowerButton) {
         showFlowerFact
     );
 }
+/* ---------- JOURNAL ---------- */
+
+function saveEntry() {
+
+    const title =
+        document.getElementById("entryTitle").value;
+
+    const date =
+        document.getElementById("entryDate").value;
+
+    const text =
+        document.getElementById("entryText").value;
+
+    if (!title || !date || !text) {
+
+        alert("Please fill in all the fields. 🌸");
+
+        return;
+
+    }
+
+    const entry = {
+        title: title,
+        date: date,
+        text: text
+    };
+
+
+    let entries =
+        JSON.parse(
+            localStorage.getItem("rosyLettersJournal")
+        ) || [];
+
+
+    entries.unshift(entry);
+
+
+    localStorage.setItem(
+        "rosyLettersJournal",
+        JSON.stringify(entries)
+    );
+
+
+    document.getElementById("entryTitle").value = "";
+
+    document.getElementById("entryDate").value = "";
+
+    document.getElementById("entryText").value = "";
+
+
+    displayEntries();
+
+}
+
+
+function displayEntries() {
+
+    const container =
+        document.getElementById("journalEntries");
+
+
+    if (!container) return;
+
+
+    let entries =
+        JSON.parse(
+            localStorage.getItem("rosyLettersJournal")
+        ) || [];
+
+
+    container.innerHTML = "";
+
+
+    entries.forEach(function(entry) {
+
+        const journalEntry =
+            document.createElement("div");
+
+        journalEntry.className =
+            "journal-entry";
+
+
+        journalEntry.innerHTML = `
+
+            <div class="journal-date">
+                ${entry.date}
+            </div>
+
+            <h2>
+                🌸 ${entry.title}
+            </h2>
+
+            <p>
+                ${entry.text.replace(/\n/g, "<br>")}
+            </p>
+
+        `;
+
+
+        container.appendChild(journalEntry);
+
+    });
+
+}
+
+
+displayEntries();
