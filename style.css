@@ -1938,3 +1938,158 @@ footer {
     }
 
 }
+/* ---------- GARDEN 3.0 ---------- */
+
+.garden-time {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 12px 20px;
+    background: #fffafa;
+    border: 1px solid #f1d9e2;
+    border-radius: 20px;
+    text-align: center;
+    color: #765963;
+}
+
+.garden-sky {
+    position: relative;
+    height: 170px;
+    overflow: hidden;
+}
+
+.garden-sky.night {
+    background: linear-gradient(
+        #4d536f,
+        #747b9b
+    );
+}
+
+.moon {
+    display: none;
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    font-size: 55px;
+}
+
+.butterfly {
+    position: absolute;
+    font-size: 28px;
+    animation: butterflyFloat 5s infinite ease-in-out;
+}
+
+.butterfly-one {
+    left: 35%;
+    top: 60px;
+}
+
+.butterfly-two {
+    right: 25%;
+    top: 100px;
+    animation-delay: 2s;
+}
+
+.bee {
+    position: absolute;
+    left: 55%;
+    top: 35px;
+    font-size: 28px;
+    animation: beeFloat 4s infinite ease-in-out;
+}
+
+@keyframes butterflyFloat {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -15px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+}
+
+@keyframes beeFloat {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-25px, 15px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+}
+
+
+/* COLLECTION */
+
+.collection {
+    display: grid;
+    grid-template-columns:
+        repeat(2, 1fr);
+    gap: 10px;
+}
+
+.collection-item {
+    padding: 12px;
+    background: #fce8ef;
+    border-radius: 12px;
+    color: #765963;
+}
+
+
+/* ACHIEVEMENTS */
+
+.achievements {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.achievement {
+    padding: 12px 16px;
+    background: #fce8ef;
+    border: 1px solid #f1d9e2;
+    border-radius: 15px;
+    color: #765963;
+}
+
+
+/* NIGHT GARDEN */
+
+.garden-sky.night .cloud {
+    opacity: 0.25;
+}
+
+.garden-sky.night + .garden-ground {
+    background:
+        linear-gradient(
+            #8ca17c,
+            #718966
+        );
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .collection {
+        grid-template-columns: 1fr;
+    }
+
+    .garden-status {
+        gap: 8px;
+    }
+
+}
