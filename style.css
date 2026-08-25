@@ -1359,3 +1359,231 @@ footer {
     }
 
 }
+/* ---------- MY GARDEN ---------- */
+
+.my-garden {
+    max-width: 900px;
+    margin: 0 auto 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.empty-garden {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background: #fffafa;
+
+    border: 1px dashed #e5c5d1;
+
+    border-radius: 20px;
+
+    color: #9a7885;
+}
+
+
+.garden-card {
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    padding: 30px;
+
+    background: #fffafa;
+
+    border: 1px solid #f1d9e2;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px
+        rgba(180, 100, 130, 0.10);
+}
+
+
+.garden-card h2 {
+    color: #765963;
+}
+
+
+.garden-card p {
+    color: #806b73;
+}
+
+
+#flowerChoice,
+#flowerName {
+
+    width: 80%;
+
+    padding: 12px;
+
+    margin: 8px;
+
+    border:
+
+        1px solid #e5c5d1;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #765963;
+
+    font-family: inherit;
+
+}
+
+
+.garden-plant {
+
+    padding: 25px 15px;
+
+    background: #fffafa;
+
+    border: 1px solid #f1d9e2;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px
+        rgba(180, 100, 130, 0.10);
+
+    transition:
+        transform 0.2s ease;
+
+}
+
+
+.garden-plant:hover {
+
+    transform:
+        translateY(-5px);
+
+}
+
+
+.plant-flower {
+
+    font-size: 60px;
+
+    min-height: 75px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.garden-plant h2 {
+
+    color: #765963;
+
+    margin:
+        10px 0 5px;
+
+}
+
+
+.garden-plant p {
+
+    color: #9a7885;
+
+    font-size: 14px;
+
+}
+
+
+.plant-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 15px;
+
+}
+
+
+.small-button {
+
+    font-size: 13px;
+
+    padding:
+        8px 12px;
+
+}
+
+
+.remove-button {
+
+    border: none;
+
+    padding:
+        8px 12px;
+
+    border-radius: 10px;
+
+    background: #f4e3e8;
+
+    color: #765963;
+
+    cursor: pointer;
+
+}
+
+
+.remove-button:hover {
+
+    background: #efd2dc;
+
+}
+
+
+@media (max-width: 700px) {
+
+    .my-garden {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .my-garden {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    #flowerChoice,
+    #flowerName {
+
+        width: 90%;
+
+    }
+
+}
