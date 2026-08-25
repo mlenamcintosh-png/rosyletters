@@ -1212,3 +1212,41 @@ footer {
     margin: 40px auto;
     text-align: center;
 }
+.music-intro {
+    text-align: center;
+    color: #806b73;
+    margin-bottom: 30px;
+}
+
+.music-card {
+    max-width: 750px;
+    margin: 0 auto 35px;
+    padding: 25px;
+    background: #fffafa;
+    border: 1px solid #f1d9e2;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(180, 100, 130, 0.12);
+}
+
+.music-card h2 {
+    color: #765963;
+    margin-bottom: 5px;
+}
+
+.music-card p {
+    color: #9a7885;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.music-card iframe {
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+}
+
+.music-note {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
