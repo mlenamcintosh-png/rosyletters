@@ -37,89 +37,235 @@ content="width=device-width, initial-scale=1.0">
 </h1>
 
 <p class="garden-intro">
-
-Plant little flowers, take care of them,
-and watch your garden grow. 🌱♡
-
+A tiny garden that grows with a little love. ♡
 </p>
 
 
-<!-- PLANTING AREA -->
+<!-- GARDEN STATUS -->
+
+<div class="garden-status">
+
+<div>
+🌱 Seeds:
+<strong id="seedCount">6</strong>
+</div>
+
+<div>
+🌸 Flowers:
+<strong id="flowerCount">0</strong>
+</div>
+
+<div>
+💧 Water:
+<strong id="waterCount">0</strong>
+</div>
+
+</div>
+
+
+<!-- GARDEN -->
+
+<div class="garden-area">
+
+<div class="garden-sky">
+
+<div class="sun">
+☀️
+</div>
+
+<div class="cloud cloud-one">
+☁️
+</div>
+
+<div class="cloud cloud-two">
+☁️
+</div>
+
+</div>
+
+
+<div class="garden-ground">
+
+<div
+class="plant-spot"
+id="spot1"
+onclick="plantAtSpot(1)">
+
+🌱
+
+</div>
+
+
+<div
+class="plant-spot"
+id="spot2"
+onclick="plantAtSpot(2)">
+
+🌱
+
+</div>
+
+
+<div
+class="plant-spot"
+id="spot3"
+onclick="plantAtSpot(3)">
+
+🌱
+
+</div>
+
+
+<div
+class="plant-spot"
+id="spot4"
+onclick="plantAtSpot(4)">
+
+🌱
+
+</div>
+
+
+<div
+class="plant-spot"
+id="spot5"
+onclick="plantAtSpot(5)">
+
+🌱
+
+</div>
+
+
+<div
+class="plant-spot"
+id="spot6"
+onclick="plantAtSpot(6)">
+
+🌱
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SEED SHOP -->
 
 <div class="garden-card">
 
 <h2>
-🌱 Plant a Flower
+🌱 Seed Bag
 </h2>
 
 <p>
-Choose a flower and give it a name.
+Choose a seed and then click an empty spot in your garden.
 </p>
 
 
-<select id="flowerChoice">
-
-<option value="🌹">
-🌹 Rose
-</option>
-
-<option value="🌻">
-🌻 Sunflower
-</option>
-
-<option value="🌷">
-🌷 Tulip
-</option>
-
-<option value="🌸">
-🌸 Cherry Blossom
-</option>
-
-<option value="🌺">
-🌺 Hibiscus
-</option>
-
-<option value="🪻">
-🪻 Lavender
-</option>
-
-</select>
-
-
-<input
-type="text"
-id="flowerName"
-placeholder="Give your flower a name...">
-
-
-<br>
+<div class="seed-options">
 
 
 <button
-class="button"
-onclick="plantFlower()">
+onclick="chooseSeed('🌹')">
 
-🌱 Plant Flower
+🌹 Rose
+
+</button>
+
+
+<button
+onclick="chooseSeed('🌻')">
+
+🌻 Sunflower
+
+</button>
+
+
+<button
+onclick="chooseSeed('🌷')">
+
+🌷 Tulip
+
+</button>
+
+
+<button
+onclick="chooseSeed('🌸')">
+
+🌸 Cherry Blossom
+
+</button>
+
+
+<button
+onclick="chooseSeed('🌺')">
+
+🌺 Hibiscus
+
+</button>
+
+
+<button
+onclick="chooseSeed('🪻')">
+
+🪻 Lavender
 
 </button>
 
 </div>
 
 
-<!-- MY GARDEN -->
+<p id="selectedSeed">
 
-<h2 class="section-title">
-🌸 My Garden
-</h2>
+No seed selected.
 
+</p>
+
+</div>
+
+
+<!-- FLOWER ACTIONS -->
 
 <div
-class="my-garden"
-id="myGarden">
+class="garden-card"
+id="flowerActions">
 
-<p class="empty-garden">
-Your garden is waiting for its first flower. 🌱
+<h2>
+🌱 Garden Care
+</h2>
+
+<p>
+Select a planted flower to take care of it.
 </p>
+
+<button
+class="button"
+onclick="waterSelected()">
+
+💧 Water
+
+</button>
+
+
+<button
+class="button"
+onclick="removeSelected()">
+
+🗑️ Remove
+
+</button>
+
+</div>
+
+
+<!-- MESSAGE -->
+
+<div
+class="garden-message"
+id="gardenMessage">
+
+🌸 Welcome to your garden!
 
 </div>
 
@@ -138,32 +284,80 @@ Your garden is waiting for its first flower. 🌱
 
 /* ---------- GARDEN DATA ---------- */
 
-let garden =
-    JSON.parse(
-        localStorage.getItem("ellieGarden")
-    ) || [];
+
+let gardenData =
+JSON.parse(
+localStorage.getItem(
+"ellieGardenV2"
+)
+) || {
+
+    seeds: 6,
+
+    totalWater: 0,
+
+    selectedSeed: null,
+
+    selectedSpot: null,
+
+    spots: {}
+
+};
 
 
-/* ---------- PLANT FLOWER ---------- */
-
-function plantFlower() {
-
-    const flower =
-        document.getElementById(
-            "flowerChoice"
-        ).value;
+/* ---------- SAVE ---------- */
 
 
-    const name =
-        document.getElementById(
-            "flowerName"
-        ).value.trim();
+function saveGarden() {
+
+    localStorage.setItem(
+        "ellieGardenV2",
+        JSON.stringify(gardenData)
+    );
+
+}
 
 
-    if (!name) {
+/* ---------- CHOOSE SEED ---------- */
 
-        alert(
-            "Give your flower a name first! 🌸"
+
+function chooseSeed(seed) {
+
+    gardenData.selectedSeed = seed;
+
+    document.getElementById(
+        "selectedSeed"
+    ).textContent =
+        "Selected seed: " + seed +
+        " — now choose an empty garden spot. 🌱";
+
+    saveGarden();
+
+}
+
+
+/* ---------- PLANT ---------- */
+
+
+function plantAtSpot(spotNumber) {
+
+    if (
+        gardenData.spots[spotNumber]
+    ) {
+
+        selectPlant(spotNumber);
+
+        return;
+
+    }
+
+
+    if (
+        !gardenData.selectedSeed
+    ) {
+
+        showMessage(
+            "Choose a seed first! 🌱"
         );
 
         return;
@@ -171,13 +365,23 @@ function plantFlower() {
     }
 
 
-    const newFlower = {
+    if (
+        gardenData.seeds <= 0
+    ) {
 
-        id: Date.now(),
+        showMessage(
+            "You're out of seeds! 🌱"
+        );
 
-        flower: flower,
+        return;
 
-        name: name,
+    }
+
+
+    gardenData.spots[spotNumber] = {
+
+        flower:
+            gardenData.selectedSeed,
 
         growth: 0,
 
@@ -186,206 +390,100 @@ function plantFlower() {
     };
 
 
-    garden.push(newFlower);
+    gardenData.seeds--;
+
+
+    gardenData.selectedSpot =
+        spotNumber;
+
+
+    gardenData.selectedSeed =
+        null;
+
+
+    document.getElementById(
+        "selectedSeed"
+    ).textContent =
+        "Your seed has been planted! 🌱";
+
+
+    showMessage(
+        "A tiny seed has been planted. Give it some water! 💧"
+    );
 
 
     saveGarden();
 
-
-    document.getElementById(
-        "flowerName"
-    ).value = "";
-
-
-    displayGarden();
+    updateGarden();
 
 }
 
 
-/* ---------- DISPLAY GARDEN ---------- */
+/* ---------- SELECT PLANT ---------- */
 
-function displayGarden() {
 
-    const gardenBox =
-        document.getElementById(
-            "myGarden"
+function selectPlant(spotNumber) {
+
+    gardenData.selectedSpot =
+        spotNumber;
+
+
+    const plant =
+        gardenData.spots[spotNumber];
+
+
+    showMessage(
+        plant.flower +
+        " selected! It has been watered " +
+        plant.water +
+        " time(s). 💧"
+    );
+
+
+    updateGarden();
+
+}
+
+
+/* ---------- WATER ---------- */
+
+
+function waterSelected() {
+
+    const spot =
+        gardenData.selectedSpot;
+
+
+    if (!spot) {
+
+        showMessage(
+            "Choose a flower first. 🌸"
         );
-
-
-    gardenBox.innerHTML = "";
-
-
-    if (garden.length === 0) {
-
-        gardenBox.innerHTML = `
-
-            <p class="empty-garden">
-
-                Your garden is waiting
-                for its first flower. 🌱
-
-            </p>
-
-        `;
 
         return;
 
     }
 
 
-    garden.forEach(function(plant) {
-
-
-        let flowerDisplay;
-
-
-        if (plant.growth === 0) {
-
-            flowerDisplay = "🌱";
-
-        }
-
-        else if (plant.growth === 1) {
-
-            flowerDisplay =
-                plant.flower;
-
-        }
-
-        else {
-
-            flowerDisplay =
-                plant.flower +
-                plant.flower;
-
-        }
-
-
-        let growthText;
-
-
-        if (plant.growth === 0) {
-
-            growthText =
-                "Just planted 🌱";
-
-        }
-
-        else if (plant.growth === 1) {
-
-            growthText =
-                "Growing 🌿";
-
-        }
-
-        else {
-
-            growthText =
-                "Fully grown 🌸";
-
-        }
-
-
-        const card =
-            document.createElement(
-                "div"
-            );
-
-
-        card.className =
-            "garden-plant";
-
-
-        card.innerHTML = `
-
-            <div class="plant-flower">
-
-                ${flowerDisplay}
-
-            </div>
-
-
-            <h2>
-
-                ${plant.name}
-
-            </h2>
-
-
-            <p>
-
-                ${growthText}
-
-            </p>
-
-
-            <p>
-
-                💧 Watered:
-                ${plant.water} time(s)
-
-            </p>
-
-
-            <div class="plant-buttons">
-
-                <button
-                class="button small-button"
-                onclick="waterFlower(${plant.id})">
-
-                    💧 Water
-
-                </button>
-
-
-                <button
-                class="remove-button"
-                onclick="removeFlower(${plant.id})">
-
-                    🗑️ Remove
-
-                </button>
-
-            </div>
-
-        `;
-
-
-        gardenBox.appendChild(card);
-
-    });
-
-}
-
-
-/* ---------- WATER FLOWER ---------- */
-
-function waterFlower(id) {
-
     const plant =
-        garden.find(
-            function(item) {
-
-                return item.id === id;
-
-            }
-        );
+        gardenData.spots[spot];
 
 
-    if (!plant) return;
+    if (!plant) {
+
+        return;
+
+    }
 
 
     plant.water++;
 
+    gardenData.totalWater++;
 
-    /*
-    Every 3 waters,
-    the flower grows.
-    */
 
     if (
-        plant.water % 3 === 0 &&
-        plant.growth < 2
+        plant.water % 2 === 0 &&
+        plant.growth < 3
     ) {
 
         plant.growth++;
@@ -393,51 +491,225 @@ function waterFlower(id) {
     }
 
 
+    showMessage(
+        "💧 Your " +
+        plant.flower +
+        " has been watered!"
+    );
+
+
     saveGarden();
 
-
-    displayGarden();
+    updateGarden();
 
 }
 
 
-/* ---------- REMOVE FLOWER ---------- */
+/* ---------- REMOVE ---------- */
 
-function removeFlower(id) {
 
-    garden =
-        garden.filter(
-            function(plant) {
+function removeSelected() {
 
-                return plant.id !== id;
+    const spot =
+        gardenData.selectedSpot;
 
-            }
+
+    if (!spot) {
+
+        showMessage(
+            "Choose a flower first. 🌸"
         );
 
+        return;
+
+    }
+
+
+    if (
+        gardenData.spots[spot]
+    ) {
+
+        delete gardenData.spots[spot];
+
+        gardenData.seeds++;
+
+        gardenData.selectedSpot =
+            null;
+
+
+        showMessage(
+            "The garden spot is empty again. 🌱"
+        );
+
+    }
+
 
     saveGarden();
 
-
-    displayGarden();
+    updateGarden();
 
 }
 
 
-/* ---------- SAVE GARDEN ---------- */
+/* ---------- FLOWER LOOK ---------- */
 
-function saveGarden() {
 
-    localStorage.setItem(
-        "ellieGarden",
-        JSON.stringify(garden)
+function getFlowerDisplay(plant) {
+
+    if (
+        plant.growth === 0
+    ) {
+
+        return "🌱";
+
+    }
+
+
+    if (
+        plant.growth === 1
+    ) {
+
+        return "🌿";
+
+    }
+
+
+    if (
+        plant.growth === 2
+    ) {
+
+        return plant.flower;
+
+    }
+
+
+    return (
+        plant.flower +
+        "✨"
     );
 
 }
 
 
-/* ---------- LOAD GARDEN ---------- */
+/* ---------- UPDATE GARDEN ---------- */
 
-displayGarden();
+
+function updateGarden() {
+
+    let flowerCount = 0;
+
+
+    for (
+        let i = 1;
+        i <= 6;
+        i++
+    ) {
+
+        const spot =
+            document.getElementById(
+                "spot" + i
+            );
+
+
+        const plant =
+            gardenData.spots[i];
+
+
+        if (plant) {
+
+            spot.textContent =
+                getFlowerDisplay(plant);
+
+
+            spot.classList.add(
+                "planted"
+            );
+
+
+            if (
+                gardenData.selectedSpot === i
+            ) {
+
+                spot.classList.add(
+                    "selected"
+                );
+
+            }
+
+            else {
+
+                spot.classList.remove(
+                    "selected"
+                );
+
+            }
+
+
+            if (
+                plant.growth >= 2
+            ) {
+
+                flowerCount++;
+
+            }
+
+        }
+
+        else {
+
+            spot.textContent =
+                "🌱";
+
+            spot.classList.remove(
+                "planted"
+            );
+
+            spot.classList.remove(
+                "selected"
+            );
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "seedCount"
+    ).textContent =
+        gardenData.seeds;
+
+
+    document.getElementById(
+        "flowerCount"
+    ).textContent =
+        flowerCount;
+
+
+    document.getElementById(
+        "waterCount"
+    ).textContent =
+        gardenData.totalWater;
+
+}
+
+
+/* ---------- MESSAGE ---------- */
+
+
+function showMessage(message) {
+
+    document.getElementById(
+        "gardenMessage"
+    ).textContent =
+        message;
+
+}
+
+
+/* ---------- START ---------- */
+
+
+updateGarden();
 
 </script>
 
