@@ -2,161 +2,212 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>About ♡ Rosy Letters</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>About Ellie ♡</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
+    <header>
 
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="favorites.html">Favorites</a>
-<a href="gallery.html">Gallery</a>
-<a href="journal.html">Journal</a>
-<a href="music.html">Music</a>
-<a href="room.html">My Room</a>
-<a href="garden.html">Garden</a>
+        <h1>Rosy Letters</h1>
 
-</nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="journal.html">Journal</a>
+        </nav>
 
-
-<section>
-
-<h1 class="section-title">
-About Ellie 🌷
-</h1>
-
-<div class="card">
-
-<h2>
-♡ Hello!
-</h2>
-
-<p>
-
-My name is Ellie.
-
-I'm someone who loves creating things
-and exploring new places and ideas.
-
-I'm quite shy when I first meet people,
-but once I'm comfortable I'm a really
-nice person who enjoys talking and
-getting to know people.
-
-I love cute things, pretty spaces,
-creative projects and, of course...
-
-<strong>fries. 🍟</strong>
-
-</p>
-
-</div>
+    </header>
 
 
-<div class="card-grid">
+    <main>
 
-<div class="card">
+        <!-- ABOUT ME -->
 
-<div class="emoji">🎨</div>
+        <section>
 
-<h2>
-Creating
-</h2>
+            <h2 class="section-title">
+                🌷 About Me
+            </h2>
 
-<p>
-I love making things and turning
-ideas into something real.
-</p>
+            <div class="about-card">
 
-</div>
+                <div class="about-text">
 
+                    <h3>Welcome to Rosy Letters ♡</h3>
 
-<div class="card">
+                    <p>
+                        Hello! Welcome to my little corner of the internet.
+                        Rosy Letters is a personal space filled with little
+                        pieces of my life, memories, thoughts, interests,
+                        and things that make me happy.
+                    </p>
 
-<div class="emoji">🌎</div>
+                    <p>
+                        I wanted to create somewhere that feels cozy,
+                        personal, and completely mine — almost like a
+                        digital scrapbook.
+                    </p>
 
-<h2>
-Exploring
-</h2>
+                    <p>
+                        Take a look around and explore the different
+                        sections. There are always new little things
+                        being added. 🌸
+                    </p>
 
-<p>
-I like discovering new places,
-ideas and experiences.
-</p>
+                </div>
 
-</div>
+            </div>
 
-
-<div class="card">
-
-<div class="emoji">🎀</div>
-
-<h2>
-Cute things
-</h2>
-
-<p>
-Pretty decorations, flowers,
-cozy spaces and little details.
-</p>
-
-</div>
+        </section>
 
 
-<div class="card">
+        <!-- FLOWER FACTS -->
 
-<div class="emoji">🍟</div>
+        <section>
 
-<h2>
-Important information
-</h2>
+            <h2 class="section-title">
+                🌸 Flower Facts
+            </h2>
 
-<p>
-Fries are very important.
-That is all.
-</p>
+            <div class="flower-fact">
 
-</div>
+                <p id="flowerFact" class="fact-text">
+                    Click the button below for a flower fact!
+                </p>
 
-</div>
+                <button
+                    class="button"
+                    id="flowerButton"
+                    type="button">
 
+                    🌷 Another fact
 
-<h2 class="section-title">
-🌸 Flower Facts
-</h2>
+                </button>
 
-<div class="flower-fact">
+            </div>
 
-    <p id="flowerFact" class="fact-text">
-        Click below for a flower fact.
-    </p>
-
-    <button class="button" id="flowerButton">
-        🌷 Another fact
-    </button>
-
-</div>
+        </section>
 
 
-</section>
+        <!-- FAVORITES -->
+
+        <section>
+
+            <h2 class="section-title">
+                💗 A Few Favorites
+            </h2>
+
+            <div class="favorites">
+
+                <div class="favorite-card">
+                    <span>🌸</span>
+                    <h3>Flowers</h3>
+                    <p>Especially pretty and delicate ones.</p>
+                </div>
+
+                <div class="favorite-card">
+                    <span>🎀</span>
+                    <h3>Pretty Things</h3>
+                    <p>Little details that make ordinary days feel special.</p>
+                </div>
+
+                <div class="favorite-card">
+                    <span>📖</span>
+                    <h3>Memories</h3>
+                    <p>Keeping little moments worth remembering.</p>
+                </div>
+
+            </div>
+
+        </section>
 
 
-<footer>
-♡ Ellie ♡
-</footer>
+        <!-- LITTLE NOTE -->
 
-<script src="./script.js"></script>
+        <section>
+
+            <div class="little-note">
+
+                <p>
+                    "A little place for little things that matter." ♡
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        ♡ Rosy Letters ♡
+
+    </footer>
+
+
+    <script src="./script.js"></script>
+
+    <script>
+
+        const flowerFacts = [
+            "🌹 Roses belong to the genus Rosa.",
+            "🌻 Sunflowers belong to the daisy family.",
+            "🌷 Tulips originally came from Central Asia.",
+            "🌸 Cherry blossoms are called sakura in Japan.",
+            "🌼 Daisies belong to the same plant family as sunflowers.",
+            "💜 Lavender is famous for its fragrant purple flowers.",
+            "🌺 Hibiscus flowers can grow in tropical and subtropical regions.",
+            "🪻 Lilacs are known for their sweet fragrance.",
+            "🌸 Magnolia flowers existed long before bees became common pollinators.",
+            "🌺 Orchids are one of the largest families of flowering plants.",
+            "🌷 Daffodils belong to the genus Narcissus.",
+            "🌻 Sunflowers are native to North America.",
+            "🌹 Some roses produce fruits called rose hips.",
+            "🌼 The yellow center of a daisy contains many tiny flowers.",
+            "🌺 Plumeria flowers are often strongly scented.",
+            "🌸 Apple trees produce flowers before their fruit develops.",
+            "🪻 Lavender belongs to the mint family.",
+            "🌺 Gardenias are famous for their white flowers and fragrance.",
+            "🌷 Hyacinths produce clusters of fragrant flowers.",
+            "🌼 Chrysanthemums come in many colors and shapes."
+        ];
+
+
+        const flowerFact =
+            document.getElementById("flowerFact");
+
+        const flowerButton =
+            document.getElementById("flowerButton");
+
+
+        function showFlowerFact() {
+
+            const randomNumber =
+                Math.floor(
+                    Math.random() * flowerFacts.length
+                );
+
+            flowerFact.textContent =
+                flowerFacts[randomNumber];
+
+        }
+
+
+        flowerButton.addEventListener(
+            "click",
+            showFlowerFact
+        );
+
+    </script>
+
 </body>
 
 </html>
