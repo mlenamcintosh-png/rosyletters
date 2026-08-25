@@ -41,75 +41,57 @@ Little thoughts, memories, moments and things I want to remember. ♡
 </p>
 
 
-<div class="journal-entry">
+<!-- NEW ENTRY -->
 
-<div class="journal-date">
-August 25, 2026
-</div>
+<div class="journal-form">
 
 <h2>
-🌸 A New Beginning
+✍️ Write a New Entry
 </h2>
 
-<p>
+<label for="entryTitle">
+Title
+</label>
 
-Today I'm working on my little website again.
-I want Rosy Letters to become a place where I can
-keep memories, thoughts, pictures and little things
-that make me happy.
+<input
+type="text"
+id="entryTitle"
+placeholder="Give your entry a title...">
 
-</p>
 
-<p>
+<label for="entryDate">
+Date
+</label>
 
-There's still a lot I want to add, but it's slowly
-starting to feel like my own little corner of the internet.
+<input
+type="date"
+id="entryDate">
 
-</p>
+
+<label for="entryText">
+Your thoughts
+</label>
+
+<textarea
+id="entryText"
+rows="8"
+placeholder="Write whatever is on your mind..."></textarea>
+
+
+<button
+class="button"
+onclick="saveEntry()">
+
+🌸 Save Entry
+
+</button>
 
 </div>
 
 
-<div class="journal-entry">
+<!-- JOURNAL ENTRIES -->
 
-<div class="journal-date">
-A little memory ♡
-</div>
-
-<h2>
-🎀 Little Things
-</h2>
-
-<p>
-
-Sometimes the smallest things can make a day feel
-special. A pretty flower, a nice song, a good memory,
-or simply having a quiet moment to yourself.
-
-</p>
-
-</div>
-
-
-<div class="journal-entry">
-
-<div class="journal-date">
-🌷 Another day
-</div>
-
-<h2>
-Things I Want To Remember
-</h2>
-
-<ul>
-
-<li>Pretty moments</li>
-<li>Funny memories</li>
-<li>Things that made me smile</li>
-<li>Places I've been</li>
-<li>Things I'm grateful for</li>
-
-</ul>
+<div id="journalEntries">
 
 </div>
 
@@ -132,6 +114,8 @@ Things I Want To Remember
 
 </footer>
 
+
+<script src="script.js"></script>
 
 </body>
 
