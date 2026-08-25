@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -30,218 +29,395 @@ content="width=device-width, initial-scale=1.0">
 </nav>
 
 
-<section>
+<section class="room-page">
 
 <h1 class="section-title">
-🛏️ My Room
+🛏️ My Little Room
 </h1>
 
-<div class="card">
-
-<h2>
-Design your dream room
-</h2>
-
-<p>
-Choose furniture and decorations,
-then drag them around your room.
+<p class="room-intro">
+Build your dream room, choose an aesthetic,
+and make it completely yours. 🎀
 </p>
 
-</div>
 
+<!-- ROOM THEME -->
 
-<div class="room-controls">
+<div class="designer-panel">
 
-<button onclick="addRoomItem('🛏️')">
-Bed
+<h2>🎨 Room Aesthetic</h2>
+
+<div class="theme-buttons">
+
+<button onclick="changeTheme('pink')">
+🎀 Pink Princess
 </button>
 
-<button onclick="addRoomItem('🪑')">
-Chair
+<button onclick="changeTheme('kawaii')">
+🌸 Kawaii
 </button>
 
-<button onclick="addRoomItem('🛋️')">
-Sofa
+<button onclick="changeTheme('cottage')">
+🌿 Cottagecore
 </button>
 
-<button onclick="addRoomItem('🪞')">
-Mirror
+<button onclick="changeTheme('fairy')">
+🧚 Fairycore
 </button>
 
-<button onclick="addRoomItem('🪴')">
-Plant
+<button onclick="changeTheme('y2k')">
+💿 Y2K
 </button>
 
-<button onclick="addRoomItem('🧸')">
-Plushie
+<button onclick="changeTheme('gothic')">
+🖤 Gothic
 </button>
 
-<button onclick="addRoomItem('💡')">
-Lamp
+<button onclick="changeTheme('cozy')">
+🧸 Cozy
 </button>
 
-<button onclick="addRoomItem('📚')">
-Bookshelf
+<button onclick="changeTheme('academia')">
+📚 Academia
 </button>
 
-<button onclick="addRoomItem('📺')">
-TV
+<button onclick="changeTheme('minimal')">
+🤍 Minimal
 </button>
 
-<button onclick="addRoomItem('🎸')">
-Instrument
-</button>
-
-<button onclick="addRoomItem('🕯️')">
-Candle
-</button>
-
-<button onclick="addRoomItem('🖼️')">
-Picture
+<button onclick="changeTheme('garden')">
+🌷 Garden
 </button>
 
 </div>
 
-
-<div
-class="room"
-id="room">
-
-<div
-class="room-item"
-style="left:40%;top:55%;">
-
-🛏️
-
 </div>
 
-<div
-class="room-item"
-style="left:15%;top:55%;">
 
-🪴
+<!-- ROOM -->
+
+<div
+id="room"
+class="designer-room">
+
+<div class="room-floor"></div>
+
+<div
+id="room-window"
+class="room-window">
+
+🪟
 
 </div>
 
 <div
-class="room-item"
-style="left:75%;top:50%;">
+class="room-label">
 
-🪞
+Drag your furniture around ♡
+
+</div>
+
+</div>
+
+
+<!-- SELECTED ITEM -->
+
+<div
+id="selected-controls"
+class="designer-panel hidden">
+
+<h2>🎀 Selected Item</h2>
+
+<div class="selected-buttons">
+
+<button onclick="rotateSelected(-15)">
+↶ Rotate
+</button>
+
+<button onclick="rotateSelected(15)">
+↷ Rotate
+</button>
+
+<button onclick="resizeSelected(1.1)">
+＋ Bigger
+</button>
+
+<button onclick="resizeSelected(.9)">
+− Smaller
+</button>
+
+<button onclick="deleteSelected()">
+🗑️ Delete
+</button>
 
 </div>
 
 </div>
 
 
-<section>
+<!-- FURNITURE -->
 
-<h2 class="section-title">
-🎀 Character Creator
-</h2>
+<div class="designer-panel">
 
-<div class="character-preview">
+<h2>🛏️ Furniture</h2>
+
+<div class="item-buttons">
+
+<button onclick="addFurniture('🛏️','Bed')">
+🛏️ Bed
+</button>
+
+<button onclick="addFurniture('🪑','Chair')">
+🪑 Chair
+</button>
+
+<button onclick="addFurniture('🛋️','Sofa')">
+🛋️ Sofa
+</button>
+
+<button onclick="addFurniture('🗄️','Dresser')">
+🗄️ Dresser
+</button>
+
+<button onclick="addFurniture('🪑','Desk')">
+🪑 Desk
+</button>
+
+<button onclick="addFurniture('🪞','Vanity')">
+🪞 Vanity
+</button>
+
+<button onclick="addFurniture('📚','Bookshelf')">
+📚 Bookshelf
+</button>
+
+<button onclick="addFurniture('🗃️','Nightstand')">
+🗃️ Nightstand
+</button>
+
+<button onclick="addFurniture('🪑','Table')">
+🪑 Table
+</button>
+
+</div>
+
+</div>
+
+
+<!-- DECOR -->
+
+<div class="designer-panel">
+
+<h2>🌸 Decor</h2>
+
+<div class="item-buttons">
+
+<button onclick="addFurniture('🪴','Plant')">
+🪴 Plant
+</button>
+
+<button onclick="addFurniture('🧸','Plushie')">
+🧸 Plushie
+</button>
+
+<button onclick="addFurniture('🕯️','Candle')">
+🕯️ Candle
+</button>
+
+<button onclick="addFurniture('💡','Lamp')">
+💡 Lamp
+</button>
+
+<button onclick="addFurniture('🪞','Mirror')">
+🪞 Mirror
+</button>
+
+<button onclick="addFurniture('🖼️','Picture')">
+🖼️ Picture
+</button>
+
+<button onclick="addFurniture('🎀','Bow')">
+🎀 Bow
+</button>
+
+<button onclick="addFurniture('🌸','Flower')">
+🌸 Flower
+</button>
+
+<button onclick="addFurniture('🧺','Basket')">
+🧺 Basket
+</button>
+
+<button onclick="addFurniture('🧴','Cosmetics')">
+🧴 Cosmetics
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ELECTRONICS -->
+
+<div class="designer-panel">
+
+<h2>📺 Electronics</h2>
+
+<div class="item-buttons">
+
+<button onclick="addFurniture('📺','TV')">
+📺 TV
+</button>
+
+<button onclick="addFurniture('💻','Laptop')">
+💻 Laptop
+</button>
+
+<button onclick="addFurniture('🎮','Console')">
+🎮 Console
+</button>
+
+<button onclick="addFurniture('🎧','Headphones')">
+🎧 Headphones
+</button>
+
+<button onclick="addFurniture('🔊','Speaker')">
+🔊 Speaker
+</button>
+
+<button onclick="addFurniture('❄️','AC')">
+❄️ AC
+</button>
+
+<button onclick="addFurniture('🌀','Fan')">
+🌀 Fan
+</button>
+
+</div>
+
+</div>
+
+
+<!-- FUN -->
+
+<div class="designer-panel">
+
+<h2>🎸 Fun Stuff</h2>
+
+<div class="item-buttons">
+
+<button onclick="addFurniture('🎸','Guitar')">
+🎸 Guitar
+</button>
+
+<button onclick="addFurniture('🎹','Piano')">
+🎹 Piano
+</button>
+
+<button onclick="addFurniture('🎻','Violin')">
+🎻 Violin
+</button>
+
+<button onclick="addFurniture('🐶','Dog')">
+🐶 Dog
+</button>
+
+<button onclick="addFurniture('🐱','Cat')">
+🐱 Cat
+</button>
+
+<button onclick="addFurniture('🐰','Bunny')">
+🐰 Bunny
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SAVE CONTROLS -->
+
+<div class="designer-panel save-panel">
+
+<h2>💾 Room Controls</h2>
+
+<button
+class="button"
+onclick="saveRoom()">
+
+💾 Save Room
+
+</button>
+
+<button
+class="button secondary"
+onclick="loadRoom()">
+
+↩️ Load Room
+
+</button>
+
+<button
+class="button secondary"
+onclick="clearRoom()">
+
+🧹 Clear Room
+
+</button>
+
+</div>
+
+
+<!-- CHARACTER -->
+
+<div class="designer-panel character-section">
+
+<h2>👗 Character Designer</h2>
+
+<p>
+The full character creator is coming next.
+For now, choose your character's basic appearance.
+</p>
+
+<div class="character-preview"
+id="character">
 
 🧍🏽‍♀️
 
 </div>
 
 
-<div class="customizer">
+<div class="character-options">
 
-<div class="card">
+<div>
 
-<h3>
-Skin
-</h3>
+<label>Skin</label>
 
-<select>
+<select
+onchange="changeCharacter(this.value)">
 
-<option>Light</option>
-<option>Medium Light</option>
-<option>Medium</option>
-<option>Medium Dark</option>
-<option>Dark</option>
+<option value="🧍🏻‍♀️">Light</option>
 
-</select>
+<option value="🧍🏼‍♀️">
+Light Medium
+</option>
 
-</div>
+<option value="🧍🏽‍♀️"
+selected>
+Medium
+</option>
 
+<option value="🧍🏾‍♀️">
+Medium Dark
+</option>
 
-<div class="card">
-
-<h3>
-Hair
-</h3>
-
-<select>
-
-<option>Long</option>
-<option>Short</option>
-<option>Curly</option>
-<option>Wavy</option>
-<option>Braids</option>
-<option>Ponytail</option>
+<option value="🧍🏿‍♀️">
+Dark
+</option>
 
 </select>
 
 </div>
-
-
-<div class="card">
-
-<h3>
-Style
-</h3>
-
-<select>
-
-<option>Casual</option>
-<option>Formal</option>
-<option>Traditional</option>
-<option>Homewear</option>
-<option>Fantasy</option>
-
-</select>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-Accessories
-</h3>
-
-<select>
-
-<option>None</option>
-<option>Bow</option>
-<option>Glasses</option>
-<option>Hat</option>
-<option>Earrings</option>
-<option>Necklace</option>
-
-</select>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-Mobility
-</h3>
-
-<select>
-
-<option>Standing</option>
-<option>Wheelchair</option>
-<option>Prosthetic</option>
-<option>Cane</option>
-<option>Crutches</option>
-
-</select>
 
 </div>
 
@@ -249,7 +425,12 @@ Mobility
 
 </section>
 
-</section>
+
+<footer>
+
+♡ Ellie's Little Corner ♡
+
+</footer>
 
 
 <script src="script.js"></script>
