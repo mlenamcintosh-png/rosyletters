@@ -1,3 +1,291 @@
+/* =========================
+   CLOCK
+========================= */
+
+function updateClock() {
+
+    const clock = document.getElementById("clock");
+
+    if (!clock) return;
+
+    const now = new Date();
+
+    clock.textContent =
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+
+/* =========================
+   DATE
+========================= */
+
+function updateDate() {
+
+    const dateElement =
+        document.getElementById("currentDate");
+
+    if (!dateElement) return;
+
+    const today = new Date();
+
+    dateElement.textContent =
+        today.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        });
+}
+
+updateDate();
+
+
+/* =========================
+   FLOWERS
+========================= */
+
+function createFlower() {
+
+    const flower =
+        document.createElement("div");
+
+    flower.className =
+        "floating-flower";
+
+    const flowers = [
+        "🌸",
+        "🌷",
+        "🌼",
+        "🌺",
+        "✿",
+        "❀",
+        "♡"
+    ];
+
+    flower.textContent =
+        flowers[
+            Math.floor(
+                Math.random() * flowers.length
+            )
+        ];
+
+    flower.style.left =
+        Math.random() * 100 + "vw";
+
+    flower.style.fontSize =
+        15 + Math.random() * 20 + "px";
+
+    flower.style.animationDuration =
+        6 + Math.random() * 6 + "s";
+
+    document.body.appendChild(flower);
+
+    setTimeout(
+        () => flower.remove(),
+        12000
+    );
+}
+
+setInterval(createFlower, 1200);
+
+
+/* =========================
+   FLOWER FACTS
+========================= */
+
+const flowerFacts = [
+
+"Sunflowers are heliotropic when young, meaning their flower heads can follow the sun across the sky.",
+
+"Some orchids mimic the appearance or scent of insects to help with pollination.",
+
+"Vanilla comes from an orchid species called Vanilla planifolia.",
+
+"The Titan arum produces one of the largest flower structures in the world.",
+
+"Roses are members of the same plant family as apples, strawberries and cherries.",
+
+"Lotus flowers can regulate the temperature of their blossoms.",
+
+"Some flowers only bloom at night and are pollinated by nocturnal animals.",
+
+"Victorians developed an elaborate language of flowers called floriography.",
+
+"Cherry blossoms are strongly associated with spring and renewal in Japanese culture.",
+
+"Some flowers have ultraviolet patterns that humans cannot see but many insects can.",
+
+"Water lilies can have enormous floating leaves that support considerable weight.",
+
+"Certain flowers close their petals at night and reopen them in daylight.",
+
+"Lavender has been used historically for fragrance, gardens and traditional preparations.",
+
+"Some flowers can produce scents that change throughout the day."
+
+];
+
+function newFlowerFact() {
+
+    const fact =
+        document.getElementById("flowerFact");
+
+    if (!fact) return;
+
+    const random =
+        Math.floor(
+            Math.random() * flowerFacts.length
+        );
+
+    fact.textContent =
+        flowerFacts[random];
+}
+
+
+/* =========================
+   RANDOM SURPRISE
+========================= */
+
+function surprise() {
+
+    const surprises = [
+
+        "🌸 You found a tiny piece of happiness!",
+
+        "🎀 A secret bow appeared!",
+
+        "🦋 A fairy just flew past!",
+
+        "🌷 You deserve a beautiful day.",
+
+        "✨ Somewhere in the garden, something is sparkling.",
+
+        "🍓 The website has officially decided you are cute.",
+
+        "🌙 Come back later... there might be another secret."
+
+    ];
+
+    alert(
+        surprises[
+            Math.floor(
+                Math.random() *
+                surprises.length
+            )
+        ]
+    );
+}
+
+
+/* =========================
+   ROOM DESIGNER
+========================= */
+
+function addRoomItem(item) {
+
+    const room =
+        document.getElementById("room");
+
+    if (!room) return;
+
+    const object =
+        document.createElement("div");
+
+    object.className =
+        "room-item";
+
+    object.textContent = item;
+
+    object.style.left =
+        Math.random() * 75 + 10 + "%";
+
+    object.style.top =
+        Math.random() * 65 + 10 + "%";
+
+    room.appendChild(object);
+
+    makeDraggable(object);
+}
+
+
+function makeDraggable(element) {
+
+    let moving = false;
+
+    element.addEventListener(
+        "mousedown",
+        function() {
+
+            moving = true;
+
+        }
+    );
+
+    document.addEventListener(
+        "mouseup",
+        function() {
+
+            moving = false;
+
+        }
+    );
+
+    document.addEventListener(
+        "mousemove",
+        function(e) {
+
+            if (!moving) return;
+
+            const room =
+                document.getElementById("room");
+
+            const rect =
+                room.getBoundingClientRect();
+
+            let x =
+                e.clientX - rect.left;
+
+            let y =
+                e.clientY - rect.top;
+
+            element.style.left =
+                x + "px";
+
+            element.style.top =
+                y + "px";
+
+        }
+    );
+}
+
+
+/* =========================
+   GARDEN
+========================= */
+
+function gardenMessage(message) {
+
+    const box =
+        document.getElementById(
+            "gardenMessage"
+        );
+
+    if (!box) return;
+
+    box.textContent = message;
+
+    setTimeout(
+        () => box.textContent = "",
+        3000
+    );
+}
 /* =====================================
    CLOCK
 ===================================== */
