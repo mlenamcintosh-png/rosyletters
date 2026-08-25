@@ -1072,3 +1072,143 @@ footer {
     max-width: 750px;
     margin: auto;
 }
+/* ---------- MUSIC PLAYER ---------- */
+
+.music-intro {
+    text-align: center;
+    color: #806b73;
+    margin-bottom: 30px;
+}
+
+.music-player {
+    max-width: 500px;
+    margin: 30px auto 45px;
+    padding: 30px;
+    background: #fffafa;
+    border: 1px solid #f1d9e2;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(180, 100, 130, 0.15);
+    text-align: center;
+}
+
+.album-art {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fce8ef;
+    border-radius: 20px;
+    font-size: 70px;
+}
+
+.music-player h2 {
+    color: #765963;
+    margin-bottom: 5px;
+}
+
+.music-player > p {
+    color: #9a7885;
+    margin-top: 0;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0 15px;
+}
+
+.progress-container span {
+    font-size: 12px;
+    color: #806b73;
+}
+
+#progressBar {
+    flex: 1;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.music-button,
+.play-button {
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #fce8ef;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+}
+
+.play-button {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+}
+
+.music-button:hover,
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+.volume-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#volumeBar {
+    width: 120px;
+}
+
+.playlist {
+    max-width: 650px;
+    margin: 0 auto 40px;
+}
+
+.playlist-song {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #f1d9e2;
+    border-radius: 15px;
+    background: #fffafa;
+    cursor: pointer;
+    text-align: left;
+}
+
+.playlist-song:hover {
+    background: #fce8ef;
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.song-info strong {
+    color: #765963;
+}
+
+.song-info small {
+    color: #9a7885;
+}
+
+.music-note {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
