@@ -55,7 +55,10 @@ Hi, I'm <strong>Ellie</strong>!<br>
 A little place for my thoughts,
 memories & favorite things.
 </p>
-
+<div class="date-clock">
+    <div id="date"></div>
+    <div id="clock"></div>
+</div>
 <div
 class="clock"
 id="clock">
@@ -277,7 +280,30 @@ Made with love, flowers & a little magic.
 
 
 <script src="script.js"></script>
+<script>
+function updateDateTime() {
+    const now = new Date();
 
+    const date = now.toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
+
+    const time = now.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    document.getElementById('date').textContent = date;
+    document.getElementById('clock').textContent = time;
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+</script>
 </body>
 
 </html>
