@@ -8,7 +8,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Secret Garden ♡</title>
+<title>Ellie's Garden ♡</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -33,120 +33,414 @@ content="width=device-width, initial-scale=1.0">
 <section>
 
 <h1 class="section-title">
-🧚 The Secret Garden
+🌷 Ellie's Little Garden
 </h1>
 
-<div class="card">
+<p class="garden-intro">
 
-<p style="text-align:center">
+Plant little flowers, take care of them,
+and watch your garden grow. 🌱♡
 
-Welcome to the little forest beyond
-Ellie's website...
+</p>
 
-Explore, click things and see
-what you discover. 🌸
 
+<!-- PLANTING AREA -->
+
+<div class="garden-card">
+
+<h2>
+🌱 Plant a Flower
+</h2>
+
+<p>
+Choose a flower and give it a name.
+</p>
+
+
+<select id="flowerChoice">
+
+<option value="🌹">
+🌹 Rose
+</option>
+
+<option value="🌻">
+🌻 Sunflower
+</option>
+
+<option value="🌷">
+🌷 Tulip
+</option>
+
+<option value="🌸">
+🌸 Cherry Blossom
+</option>
+
+<option value="🌺">
+🌺 Hibiscus
+</option>
+
+<option value="🪻">
+🪻 Lavender
+</option>
+
+</select>
+
+
+<input
+type="text"
+id="flowerName"
+placeholder="Give your flower a name...">
+
+
+<br>
+
+
+<button
+class="button"
+onclick="plantFlower()">
+
+🌱 Plant Flower
+
+</button>
+
+</div>
+
+
+<!-- MY GARDEN -->
+
+<h2 class="section-title">
+🌸 My Garden
+</h2>
+
+
+<div
+class="my-garden"
+id="myGarden">
+
+<p class="empty-garden">
+Your garden is waiting for its first flower. 🌱
 </p>
 
 </div>
 
 
-<div class="garden">
-
-
-<div
-class="garden-item"
-style="left:10%;top:65%;"
-onclick="gardenMessage('🌸 A little flower says hello!')">
-
-🌸
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:25%;top:25%;"
-onclick="gardenMessage('🌳 This tree looks very old...')">
-
-🌳
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:45%;top:70%;"
-onclick="gardenMessage('🍄 A tiny fairy mushroom!')">
-
-🍄
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:65%;top:35%;"
-onclick="gardenMessage('🦋 A butterfly lands nearby.')">
-
-🦋
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:80%;top:65%;"
-onclick="gardenMessage('🏡 A tiny fairy cottage!')">
-
-🏡
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:55%;top:15%;"
-onclick="gardenMessage('🧚 You found a fairy!')">
-
-🧚
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:88%;top:25%;"
-onclick="gardenMessage('🌷 A beautiful flower is growing here.')">
-
-🌷
-
-</div>
-
-
-<div
-class="garden-item"
-style="left:35%;top:45%;"
-onclick="gardenMessage('🐞 A tiny insect is exploring the garden.')">
-
-🐞
-
-</div>
-
-
-</div>
-
-
-<h2
-id="gardenMessage"
-style="text-align:center;min-height:30px;margin-top:25px;">
-
-</h2>
-
 </section>
 
 
-<script src="script.js"></script>
+<footer>
+
+♡ Ellie ♡
+
+</footer>
+
+
+<script>
+
+/* ---------- GARDEN DATA ---------- */
+
+let garden =
+    JSON.parse(
+        localStorage.getItem("ellieGarden")
+    ) || [];
+
+
+/* ---------- PLANT FLOWER ---------- */
+
+function plantFlower() {
+
+    const flower =
+        document.getElementById(
+            "flowerChoice"
+        ).value;
+
+
+    const name =
+        document.getElementById(
+            "flowerName"
+        ).value.trim();
+
+
+    if (!name) {
+
+        alert(
+            "Give your flower a name first! 🌸"
+        );
+
+        return;
+
+    }
+
+
+    const newFlower = {
+
+        id: Date.now(),
+
+        flower: flower,
+
+        name: name,
+
+        growth: 0,
+
+        water: 0
+
+    };
+
+
+    garden.push(newFlower);
+
+
+    saveGarden();
+
+
+    document.getElementById(
+        "flowerName"
+    ).value = "";
+
+
+    displayGarden();
+
+}
+
+
+/* ---------- DISPLAY GARDEN ---------- */
+
+function displayGarden() {
+
+    const gardenBox =
+        document.getElementById(
+            "myGarden"
+        );
+
+
+    gardenBox.innerHTML = "";
+
+
+    if (garden.length === 0) {
+
+        gardenBox.innerHTML = `
+
+            <p class="empty-garden">
+
+                Your garden is waiting
+                for its first flower. 🌱
+
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    garden.forEach(function(plant) {
+
+
+        let flowerDisplay;
+
+
+        if (plant.growth === 0) {
+
+            flowerDisplay = "🌱";
+
+        }
+
+        else if (plant.growth === 1) {
+
+            flowerDisplay =
+                plant.flower;
+
+        }
+
+        else {
+
+            flowerDisplay =
+                plant.flower +
+                plant.flower;
+
+        }
+
+
+        let growthText;
+
+
+        if (plant.growth === 0) {
+
+            growthText =
+                "Just planted 🌱";
+
+        }
+
+        else if (plant.growth === 1) {
+
+            growthText =
+                "Growing 🌿";
+
+        }
+
+        else {
+
+            growthText =
+                "Fully grown 🌸";
+
+        }
+
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "garden-plant";
+
+
+        card.innerHTML = `
+
+            <div class="plant-flower">
+
+                ${flowerDisplay}
+
+            </div>
+
+
+            <h2>
+
+                ${plant.name}
+
+            </h2>
+
+
+            <p>
+
+                ${growthText}
+
+            </p>
+
+
+            <p>
+
+                💧 Watered:
+                ${plant.water} time(s)
+
+            </p>
+
+
+            <div class="plant-buttons">
+
+                <button
+                class="button small-button"
+                onclick="waterFlower(${plant.id})">
+
+                    💧 Water
+
+                </button>
+
+
+                <button
+                class="remove-button"
+                onclick="removeFlower(${plant.id})">
+
+                    🗑️ Remove
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        gardenBox.appendChild(card);
+
+    });
+
+}
+
+
+/* ---------- WATER FLOWER ---------- */
+
+function waterFlower(id) {
+
+    const plant =
+        garden.find(
+            function(item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!plant) return;
+
+
+    plant.water++;
+
+
+    /*
+    Every 3 waters,
+    the flower grows.
+    */
+
+    if (
+        plant.water % 3 === 0 &&
+        plant.growth < 2
+    ) {
+
+        plant.growth++;
+
+    }
+
+
+    saveGarden();
+
+
+    displayGarden();
+
+}
+
+
+/* ---------- REMOVE FLOWER ---------- */
+
+function removeFlower(id) {
+
+    garden =
+        garden.filter(
+            function(plant) {
+
+                return plant.id !== id;
+
+            }
+        );
+
+
+    saveGarden();
+
+
+    displayGarden();
+
+}
+
+
+/* ---------- SAVE GARDEN ---------- */
+
+function saveGarden() {
+
+    localStorage.setItem(
+        "ellieGarden",
+        JSON.stringify(garden)
+    );
+
+}
+
+
+/* ---------- LOAD GARDEN ---------- */
+
+displayGarden();
+
+</script>
+
 
 </body>
 
