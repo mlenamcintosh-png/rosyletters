@@ -931,3 +931,18 @@ footer {
     }
 
 }
+.date-clock {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#date {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#clock {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
