@@ -1,277 +1,425 @@
 /* =========================================
-   MY LITTLE ROOM
-   ROOM ENGINE
+   ROSY LETTERS ROOM DESIGNER
 ========================================= */
 
 
-/* ---------- FURNITURE DATA ---------- */
-
-const furniture = {
-
-    beds: [
-
-        {
-            name: "Pink Bed",
-            emoji: "🛏️"
-        },
-
-        {
-            name: "Cute Bed",
-            emoji: "🛏️"
-        },
-
-        {
-            name: "Cozy Bed",
-            emoji: "🛌"
-        }
-
-    ],
-
-
-    desks: [
-
-        {
-            name: "Desk",
-            emoji: "🖥️"
-        },
-
-        {
-            name: "Cute Desk",
-            emoji: "💻"
-        }
-
-    ],
-
-
-    chairs: [
-
-        {
-            name: "Chair",
-            emoji: "🪑"
-        },
-
-        {
-            name: "Cute Chair",
-            emoji: "💺"
-        }
-
-    ],
-
-
-    sofas: [
-
-        {
-            name: "Sofa",
-            emoji: "🛋️"
-        }
-
-    ],
-
-
-    dressers: [
-
-        {
-            name: "Dresser",
-            emoji: "🗄️"
-        }
-
-    ],
-
-
-    shelves: [
-
-        {
-            name: "Bookshelf",
-            emoji: "📚"
-        }
-
-    ],
-
-
-    tables: [
-
-        {
-            name: "Table",
-            emoji: "🪴"
-        }
-
-    ],
-
-
-    nightstands: [
-
-        {
-            name: "Nightstand",
-            emoji: "🗃️"
-        }
-
-    ],
-
-
-    plants: [
-
-        {
-            name: "Plant",
-            emoji: "🪴"
-        },
-
-        {
-            name: "Flower",
-            emoji: "🌸"
-        },
-
-        {
-            name: "Small Plant",
-            emoji: "🌱"
-        }
-
-    ],
-
-
-    plushies: [
-
-        {
-            name: "Teddy Bear",
-            emoji: "🧸"
-        },
-
-        {
-            name: "Bunny",
-            emoji: "🐰"
-        }
-
-    ],
-
-
-    lamps: [
-
-        {
-            name: "Lamp",
-            emoji: "💡"
-        }
-
-    ],
-
-
-    rugs: [
-
-        {
-            name: "Pink Rug",
-            emoji: "🧶"
-        }
-
-    ],
-
-
-    wall: [
-
-        {
-            name: "Picture",
-            emoji: "🖼️"
-        },
-
-        {
-            name: "Heart Decor",
-            emoji: "💗"
-        }
-
-    ]
-
-};
-
-
-/* ---------- STATE ---------- */
-
-let selectedItem = null;
-
-let highestZ = 10;
-
-
-/* ---------- DOM ---------- */
+/* =========================================
+   FURNITURE
+========================================= */
+
+const furniture = [
+
+    {
+        id: "bed",
+        name: "Bed",
+        category: "beds",
+        image: "assets/room/bed.png",
+        width: 150,
+        height: 150
+    },
+
+    {
+        id: "bed-decor",
+        name: "Bed Decor",
+        category: "beds",
+        image: "assets/room/bed-decor.png",
+        width: 130,
+        height: 130
+    },
+
+    {
+        id: "chair",
+        name: "Chair",
+        category: "seating",
+        image: "assets/room/chair.png",
+        width: 90,
+        height: 90
+    },
+
+    {
+        id: "sofa",
+        name: "Sofa",
+        category: "seating",
+        image: "assets/room/sofa.png",
+        width: 150,
+        height: 110
+    },
+
+    {
+        id: "wardrobe",
+        name: "Wardrobe",
+        category: "storage",
+        image: "assets/room/wardrobe.png",
+        width: 120,
+        height: 150
+    },
+
+    {
+        id: "dresser1",
+        name: "Dresser",
+        category: "storage",
+        image: "assets/room/dresser1.png",
+        width: 110,
+        height: 100
+    },
+
+    {
+        id: "dresser2",
+        name: "Small Dresser",
+        category: "storage",
+        image: "assets/room/dresser2.png",
+        width: 100,
+        height: 95
+    },
+
+    {
+        id: "bookshelf",
+        name: "Bookshelf",
+        category: "storage",
+        image: "assets/room/bookshelf.png",
+        width: 120,
+        height: 140
+    },
+
+    {
+        id: "tv",
+        name: "TV",
+        category: "electronics",
+        image: "assets/room/tv.png",
+        width: 105,
+        height: 90
+    },
+
+    {
+        id: "mirror",
+        name: "Mirror",
+        category: "decor",
+        image: "assets/room/mirror.png",
+        width: 85,
+        height: 130
+    },
+
+    {
+        id: "plant1",
+        name: "Plant",
+        category: "plants",
+        image: "assets/room/plant1.png",
+        width: 80,
+        height: 90
+    },
+
+    {
+        id: "plant2",
+        name: "Little Plant",
+        category: "plants",
+        image: "assets/room/plant2.png",
+        width: 75,
+        height: 85
+    }
+
+];
+
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
 
 const room =
-    document.getElementById("room");
+    document.getElementById(
+        "room"
+    );
+
 
 const roomItems =
     document.getElementById(
-        "room-items"
+        "roomItems"
     );
+
 
 const itemList =
     document.getElementById(
-        "item-list"
+        "itemList"
     );
 
-const controls =
+
+const roomStatus =
     document.getElementById(
-        "item-controls"
+        "roomStatus"
     );
 
-const selectedName =
-    document.querySelector(
-        ".selected-name"
-    );
 
-const status =
+const itemControls =
     document.getElementById(
-        "room-status"
+        "itemControls"
     );
 
 
-/* ---------- LOAD CATEGORY ---------- */
+const selectedItemName =
+    document.getElementById(
+        "selectedItemName"
+    );
 
-function showCategory(category) {
 
-    itemList.innerHTML = "";
+
+/* =========================================
+   STATE
+========================================= */
+
+let selectedCategory =
+    "beds";
+
+
+let selectedItem =
+    null;
+
+
+let highestZ =
+    10;
+
+
+
+/* =========================================
+   SHOW FURNITURE
+========================================= */
+
+function showFurniture() {
+
+
+    itemList.innerHTML =
+        "";
 
 
     const items =
-        furniture[category] || [];
+        furniture.filter(
+
+            function(item) {
+
+                return (
+                    item.category ===
+                    selectedCategory
+                );
+
+            }
+
+        );
 
 
-    items.forEach(item => {
+    if (
+        items.length === 0
+    ) {
 
-        const button =
-            document.createElement(
-                "button"
-            );
+        itemList.innerHTML = `
 
+            <p style="
+            grid-column:1/-1;
+            text-align:center;
+            color:#9a7885;
+            ">
 
-        button.className =
-            "item-button";
+            More furniture coming soon ♡
 
-
-        button.innerHTML = `
-
-            <span class="item-preview">
-                ${item.emoji}
-            </span>
-
-            <span class="item-name">
-                ${item.name}
-            </span>
+            </p>
 
         `;
 
+        return;
 
-        button.addEventListener(
-            "click",
-            () => addItem(item)
-        );
+    }
 
 
-        itemList.appendChild(
-            button
-        );
+    items.forEach(
 
-    });
+        function(item) {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "item-card";
+
+
+            button.innerHTML = `
+
+                <img
+                src="${item.image}"
+                alt="${item.name}">
+
+                <span>
+                    ${item.name}
+                </span>
+
+            `;
+
+
+            button.addEventListener(
+
+                "click",
+
+                function() {
+
+                    addFurniture(
+                        item
+                    );
+
+                }
+
+            );
+
+
+            itemList.appendChild(
+                button
+            );
+
+        }
+
+    );
 
 }
 
 
-/* ---------- ADD ITEM ---------- */
 
-function addItem(data) {
+/* =========================================
+   CATEGORY BUTTONS
+========================================= */
+
+document
+.querySelectorAll(
+    ".category-button"
+)
+.forEach(
+
+    function(button) {
+
+
+        button.addEventListener(
+
+            "click",
+
+            function() {
+
+
+                document
+                .querySelectorAll(
+                    ".category-button"
+                )
+                .forEach(
+
+                    function(item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                selectedCategory =
+                    button.dataset.category;
+
+
+                showFurniture();
+
+            }
+
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   ROOM THEMES
+========================================= */
+
+document
+.querySelectorAll(
+    ".theme-button"
+)
+.forEach(
+
+    function(button) {
+
+
+        button.addEventListener(
+
+            "click",
+
+            function() {
+
+
+                const theme =
+                    button.dataset.theme;
+
+
+                document
+                .querySelectorAll(
+                    ".theme-button"
+                )
+                .forEach(
+
+                    function(item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                room.className =
+                    "room theme-" +
+                    theme;
+
+
+                localStorage.setItem(
+                    "rosyRoomTheme",
+                    theme
+                );
+
+
+                setStatus(
+                    "Theme changed ♡"
+                );
+
+            }
+
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   ADD FURNITURE
+========================================= */
+
+function addFurniture(
+    furnitureItem
+) {
+
 
     const item =
         document.createElement(
@@ -280,27 +428,61 @@ function addItem(data) {
 
 
     item.className =
-        "room-item";
-
-
-    item.textContent =
-        data.emoji;
+        "placed-item";
 
 
     item.dataset.name =
-        data.name;
+        furnitureItem.name;
+
+
+    item.dataset.itemId =
+        furnitureItem.id;
+
+
+    item.style.width =
+        furnitureItem.width +
+        "px";
+
+
+    item.style.height =
+        furnitureItem.height +
+        "px";
 
 
     item.style.left =
-        "40%";
+        "50%";
 
 
     item.style.top =
-        "40%";
+        "55%";
+
+
+    item.style.transform =
+        "translate(-50%, -50%) rotate(0deg)";
+
+
+    item.dataset.rotation =
+        "0";
+
+
+    item.dataset.scale =
+        "1";
+
+
+    highestZ++;
 
 
     item.style.zIndex =
-        ++highestZ;
+        highestZ;
+
+
+    item.innerHTML = `
+
+        <img
+        src="${furnitureItem.image}"
+        alt="${furnitureItem.name}">
+
+    `;
 
 
     roomItems.appendChild(
@@ -308,22 +490,37 @@ function addItem(data) {
     );
 
 
-    makeDraggable(item);
+    enableDragging(
+        item
+    );
 
-    selectItem(item);
+
+    selectItem(
+        item
+    );
 
 
-    status.textContent =
-        `${data.name} added ♡`;
+    setStatus(
+        furnitureItem.name +
+        " added!"
+    );
 
 }
 
 
-/* ---------- SELECT ITEM ---------- */
 
-function selectItem(item) {
+/* =========================================
+   SELECT ITEM
+========================================= */
 
-    if (selectedItem) {
+function selectItem(
+    item
+) {
+
+
+    if (
+        selectedItem
+    ) {
 
         selectedItem.classList.remove(
             "selected"
@@ -332,80 +529,158 @@ function selectItem(item) {
     }
 
 
-    selectedItem = item;
+    selectedItem =
+        item;
 
 
-    item.classList.add(
+    selectedItem.classList.add(
         "selected"
     );
 
 
-    controls.classList.remove(
+    selectedItemName.textContent =
+        selectedItem.dataset.name;
+
+
+    itemControls.classList.remove(
         "hidden"
     );
-
-
-    selectedName.textContent =
-        item.dataset.name;
-
-
-    status.textContent =
-        `${item.dataset.name} selected ♡`;
 
 }
 
 
-/* ---------- DRAGGING ---------- */
 
-function makeDraggable(item) {
+/* =========================================
+   DESELECT
+========================================= */
 
-    let dragging = false;
+room.addEventListener(
 
-    let offsetX = 0;
+    "pointerdown",
 
-    let offsetY = 0;
-
-
-    item.addEventListener(
-        "mousedown",
-        startDrag
-    );
+    function(event) {
 
 
-    function startDrag(event) {
-
-        event.preventDefault();
-
-        selectItem(item);
-
-        dragging = true;
-
-
-        const rect =
-            item.getBoundingClientRect();
-
-
-        offsetX =
-            event.clientX -
-            rect.left;
+        if (
+            event.target === room ||
+            event.target.classList.contains(
+                "room-wall"
+            ) ||
+            event.target.classList.contains(
+                "room-floor"
+            ) ||
+            event.target.classList.contains(
+                "room-items"
+            )
+        ) {
 
 
-        offsetY =
-            event.clientY -
-            rect.top;
+            if (
+                selectedItem
+            ) {
+
+                selectedItem.classList.remove(
+                    "selected"
+                );
+
+            }
 
 
-        item.style.zIndex =
-            ++highestZ;
+            selectedItem =
+                null;
+
+
+            itemControls.classList.add(
+                "hidden"
+            );
+
+        }
 
     }
 
+);
 
-    document.addEventListener(
-        "mousemove",
-        event => {
 
-            if (!dragging) return;
+
+/* =========================================
+   DRAGGING
+========================================= */
+
+function enableDragging(
+    item
+) {
+
+
+    let dragging =
+        false;
+
+
+    let offsetX =
+        0;
+
+
+    let offsetY =
+        0;
+
+
+
+    item.addEventListener(
+
+        "pointerdown",
+
+        function(event) {
+
+
+            event.stopPropagation();
+
+
+            selectItem(
+                item
+            );
+
+
+            dragging =
+                true;
+
+
+            item.setPointerCapture(
+                event.pointerId
+            );
+
+
+            const itemRect =
+                item.getBoundingClientRect();
+
+
+            offsetX =
+                event.clientX -
+                itemRect.left;
+
+
+            offsetY =
+                event.clientY -
+                itemRect.top;
+
+        }
+
+    );
+
+
+
+    item.addEventListener(
+
+        "pointermove",
+
+        function(event) {
+
+
+            if (
+                !dragging
+            ) {
+
+                return;
+
+            }
 
 
             const roomRect =
@@ -424,433 +699,715 @@ function makeDraggable(item) {
                 offsetY;
 
 
-            x = Math.max(
-                0,
-                Math.min(
-                    x,
-                    roomRect.width - 110
-                )
-            );
+            const maxX =
+                room.clientWidth -
+                item.offsetWidth;
 
 
-            y = Math.max(
-                0,
-                Math.min(
-                    y,
-                    roomRect.height - 110
-                )
-            );
+            const maxY =
+                room.clientHeight -
+                item.offsetHeight;
+
+
+            x =
+                Math.max(
+                    0,
+                    Math.min(
+                        x,
+                        maxX
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    0,
+                    Math.min(
+                        y,
+                        maxY
+                    )
+                );
 
 
             item.style.left =
-                x + "px";
+                x +
+                "px";
 
 
             item.style.top =
-                y + "px";
+                y +
+                "px";
+
+
+            applyTransform(
+                item
+            );
 
         }
+
     );
 
 
-    document.addEventListener(
-        "mouseup",
-        () => {
 
-            dragging = false;
+    item.addEventListener(
+
+        "pointerup",
+
+        function() {
+
+
+            dragging =
+                false;
 
         }
+
     );
 
 }
 
 
-/* ---------- ROTATION ---------- */
 
-function rotateItem(amount) {
+/* =========================================
+   TRANSFORMS
+========================================= */
 
-    if (!selectedItem) return;
-
-
-    let rotation =
-        Number(
-            selectedItem.dataset.rotation
-        ) || 0;
-
-
-    rotation += amount;
-
-
-    selectedItem.dataset.rotation =
-        rotation;
-
-
-    updateTransform();
-
-}
-
-
-/* ---------- SCALE ---------- */
-
-function scaleItem(amount) {
-
-    if (!selectedItem) return;
-
-
-    let scale =
-        Number(
-            selectedItem.dataset.scale
-        ) || 1;
-
-
-    scale += amount;
-
-
-    scale = Math.max(
-        .5,
-        Math.min(
-            2,
-            scale
-        )
-    );
-
-
-    selectedItem.dataset.scale =
-        scale;
-
-
-    updateTransform();
-
-}
-
-
-/* ---------- TRANSFORM ---------- */
-
-function updateTransform() {
-
-    if (!selectedItem) return;
+function applyTransform(
+    item
+) {
 
 
     const rotation =
-        selectedItem.dataset.rotation || 0;
+        Number(
+            item.dataset.rotation
+        );
 
 
     const scale =
-        selectedItem.dataset.scale || 1;
-
-
-    selectedItem.style.transform =
-
-        `rotate(${rotation}deg)
-         scale(${scale})`;
-
-}
-
-
-/* ---------- DELETE ---------- */
-
-function deleteSelected() {
-
-    if (!selectedItem) return;
-
-
-    const name =
-        selectedItem.dataset.name;
-
-
-    selectedItem.remove();
-
-
-    selectedItem = null;
-
-
-    controls.classList.add(
-        "hidden"
-    );
-
-
-    status.textContent =
-        `${name} removed ♡`;
-
-}
-
-
-/* ---------- LAYERS ---------- */
-
-function moveFront() {
-
-    if (!selectedItem) return;
-
-
-    selectedItem.style.zIndex =
-        ++highestZ;
-
-}
-
-
-function moveBack() {
-
-    if (!selectedItem) return;
-
-
-    selectedItem.style.zIndex =
-        1;
-
-}
-
-
-/* ---------- THEMES ---------- */
-
-function changeTheme(theme) {
-
-    const themes = [
-
-        "pink",
-        "kawaii",
-        "cottage",
-        "fairy",
-        "y2k",
-        "gothic",
-        "cozy",
-        "academia",
-        "minimal",
-        "garden"
-
-    ];
-
-
-    themes.forEach(name => {
-
-        room.classList.remove(
-            `room-${name}`
+        Number(
+            item.dataset.scale
         );
 
-    });
 
+    item.style.transform =
 
-    room.classList.add(
-        `room-${theme}`
-    );
+        "rotate(" +
+        rotation +
+        "deg) " +
 
-
-    document
-        .querySelectorAll(
-            ".theme-button"
-        )
-        .forEach(button => {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.theme === theme
-            );
-
-        });
-
-
-    status.textContent =
-        `${theme} theme selected ♡`;
+        "scale(" +
+        scale +
+        ")";
 
 }
 
 
-/* ---------- CATEGORY BUTTONS ---------- */
+
+/* =========================================
+   ROTATION
+========================================= */
 
 document
-    .querySelectorAll(
-        ".category-button"
-    )
-    .forEach(button => {
+.getElementById(
+    "rotateLeft"
+)
+.addEventListener(
 
-        button.addEventListener(
-            "click",
-            () => {
+    "click",
 
-                document
-                    .querySelectorAll(
-                        ".category-button"
-                    )
-                    .forEach(btn =>
-                        btn.classList.remove(
-                            "active"
-                        )
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        selectedItem.dataset.rotation =
+
+            Number(
+                selectedItem.dataset.rotation
+            ) - 45;
+
+
+        applyTransform(
+            selectedItem
+        );
+
+    }
+
+);
+
+
+
+document
+.getElementById(
+    "rotateRight"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        selectedItem.dataset.rotation =
+
+            Number(
+                selectedItem.dataset.rotation
+            ) + 45;
+
+
+        applyTransform(
+            selectedItem
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   RESIZE
+========================================= */
+
+document
+.getElementById(
+    "makeBigger"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        let scale =
+            Number(
+                selectedItem.dataset.scale
+            );
+
+
+        scale =
+            Math.min(
+                scale + .1,
+                2
+            );
+
+
+        selectedItem.dataset.scale =
+            scale;
+
+
+        applyTransform(
+            selectedItem
+        );
+
+    }
+
+);
+
+
+
+document
+.getElementById(
+    "makeSmaller"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        let scale =
+            Number(
+                selectedItem.dataset.scale
+            );
+
+
+        scale =
+            Math.max(
+                scale - .1,
+                .4
+            );
+
+
+        selectedItem.dataset.scale =
+            scale;
+
+
+        applyTransform(
+            selectedItem
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   LAYERS
+========================================= */
+
+document
+.getElementById(
+    "moveFront"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        highestZ++;
+
+
+        selectedItem.style.zIndex =
+            highestZ;
+
+    }
+
+);
+
+
+
+document
+.getElementById(
+    "moveBack"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        selectedItem.style.zIndex =
+            1;
+
+    }
+
+);
+
+
+
+/* =========================================
+   DELETE
+========================================= */
+
+document
+.getElementById(
+    "deleteItem"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        if (
+            !selectedItem
+        ) return;
+
+
+        selectedItem.remove();
+
+
+        selectedItem =
+            null;
+
+
+        itemControls.classList.add(
+            "hidden"
+        );
+
+
+        setStatus(
+            "Item removed."
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   SAVE ROOM
+========================================= */
+
+document
+.getElementById(
+    "saveRoom"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        const savedItems =
+            [];
+
+
+        document
+        .querySelectorAll(
+            ".placed-item"
+        )
+        .forEach(
+
+            function(item) {
+
+
+                const image =
+                    item.querySelector(
+                        "img"
                     );
 
 
-                button.classList.add(
-                    "active"
-                );
+                savedItems.push({
 
+                    id:
+                        item.dataset.itemId,
 
-                showCategory(
-                    button.dataset.category
-                );
+                    name:
+                        item.dataset.name,
 
-            }
-        );
+                    image:
+                        image.src,
 
-    });
+                    left:
+                        item.style.left,
 
+                    top:
+                        item.style.top,
 
-/* ---------- THEME BUTTONS ---------- */
+                    width:
+                        item.style.width,
 
-document
-    .querySelectorAll(
-        ".theme-button"
-    )
-    .forEach(button => {
+                    height:
+                        item.style.height,
 
-        button.addEventListener(
-            "click",
-            () => {
+                    rotation:
+                        item.dataset.rotation,
 
-                changeTheme(
-                    button.dataset.theme
-                );
+                    scale:
+                        item.dataset.scale,
 
-            }
-        );
-
-    });
-
-
-/* ---------- CONTROLS ---------- */
-
-document
-    .getElementById("rotate-left")
-    .addEventListener(
-        "click",
-        () => rotateItem(-15)
-    );
-
-
-document
-    .getElementById("rotate-right")
-    .addEventListener(
-        "click",
-        () => rotateItem(15)
-    );
-
-
-document
-    .getElementById("make-smaller")
-    .addEventListener(
-        "click",
-        () => scaleItem(-.1)
-    );
-
-
-document
-    .getElementById("make-bigger")
-    .addEventListener(
-        "click",
-        () => scaleItem(.1)
-    );
-
-
-document
-    .getElementById("delete-item")
-    .addEventListener(
-        "click",
-        deleteSelected
-    );
-
-
-document
-    .getElementById("move-front")
-    .addEventListener(
-        "click",
-        moveFront
-    );
-
-
-document
-    .getElementById("move-back")
-    .addEventListener(
-        "click",
-        moveBack
-    );
-
-
-/* ---------- CLEAR ---------- */
-
-document
-    .getElementById("clear-room")
-    .addEventListener(
-        "click",
-        () => {
-
-            roomItems.innerHTML = "";
-
-            selectedItem = null;
-
-            controls.classList.add(
-                "hidden"
-            );
-
-            status.textContent =
-                "Room cleared ♡";
-
-        }
-    );
-
-
-/* ---------- SAVE ---------- */
-
-document
-    .getElementById("save-room")
-    .addEventListener(
-        "click",
-        () => {
-
-            const items = [];
-
-            document
-                .querySelectorAll(
-                    ".room-item"
-                )
-                .forEach(item => {
-
-                    items.push({
-
-                        name:
-                            item.dataset.name,
-
-                        emoji:
-                            item.textContent,
-
-                        left:
-                            item.style.left,
-
-                        top:
-                            item.style.top,
-
-                        zIndex:
-                            item.style.zIndex,
-
-                        rotation:
-                            item.dataset.rotation || 0,
-
-                        scale:
-                            item.dataset.scale || 1
-
-                    });
+                    zIndex:
+                        item.style.zIndex
 
                 });
 
+            }
 
-            localStorage.setItem(
-                "ellieRoom",
-                JSON.stringify(items)
+        );
+
+
+        localStorage.setItem(
+
+            "rosyRoomItems",
+
+            JSON.stringify(
+                savedItems
+            )
+
+        );
+
+
+        setStatus(
+            "Room saved! ♡"
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   LOAD ROOM
+========================================= */
+
+function loadRoom() {
+
+
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "rosyRoomItems"
+            )
+        );
+
+
+    if (
+        !saved
+    ) {
+
+        return;
+
+    }
+
+
+    saved.forEach(
+
+        function(savedItem) {
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "placed-item";
+
+
+            item.dataset.name =
+                savedItem.name;
+
+
+            item.dataset.itemId =
+                savedItem.id;
+
+
+            item.dataset.rotation =
+                savedItem.rotation;
+
+
+            item.dataset.scale =
+                savedItem.scale;
+
+
+            item.style.left =
+                savedItem.left;
+
+
+            item.style.top =
+                savedItem.top;
+
+
+            item.style.width =
+                savedItem.width;
+
+
+            item.style.height =
+                savedItem.height;
+
+
+            item.style.zIndex =
+                savedItem.zIndex;
+
+
+            item.innerHTML = `
+
+                <img
+                src="${savedItem.image}"
+                alt="${savedItem.name}">
+
+            `;
+
+
+            applyTransform(
+                item
             );
 
 
-            status.textContent =
-                "Room saved ♡";
+            enableDragging(
+                item
+            );
+
+
+            roomItems.appendChild(
+                item
+            );
 
         }
+
     );
 
+}
 
-/* ---------- START ---------- */
 
-showCategory("beds");
+
+/* =========================================
+   CLEAR ROOM
+========================================= */
+
+document
+.getElementById(
+    "clearRoom"
+)
+.addEventListener(
+
+    "click",
+
+    function() {
+
+
+        const answer =
+            confirm(
+                "Clear all furniture from your room?"
+            );
+
+
+        if (
+            !answer
+        ) {
+
+            return;
+
+        }
+
+
+        roomItems.innerHTML =
+            "";
+
+
+        localStorage.removeItem(
+            "rosyRoomItems"
+        );
+
+
+        selectedItem =
+            null;
+
+
+        itemControls.classList.add(
+            "hidden"
+        );
+
+
+        setStatus(
+            "Room cleared."
+        );
+
+    }
+
+);
+
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function setStatus(
+    text
+) {
+
+
+    roomStatus.textContent =
+        text;
+
+
+    setTimeout(
+
+        function() {
+
+            roomStatus.textContent =
+                "Ready ♡";
+
+        },
+
+        2000
+
+    );
+
+}
+
+
+
+/* =========================================
+   LOAD SAVED THEME
+========================================= */
+
+function loadTheme() {
+
+
+    const savedTheme =
+        localStorage.getItem(
+            "rosyRoomTheme"
+        );
+
+
+    if (
+        !savedTheme
+    ) {
+
+        return;
+
+    }
+
+
+    room.className =
+        "room theme-" +
+        savedTheme;
+
+
+    document
+    .querySelectorAll(
+        ".theme-button"
+    )
+    .forEach(
+
+        function(button) {
+
+
+            button.classList.toggle(
+
+                "active",
+
+                button.dataset.theme ===
+                savedTheme
+
+            );
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================================
+   START
+========================================= */
+
+showFurniture();
+
+loadTheme();
+
+loadRoom();
