@@ -1110,3 +1110,459 @@ function gardenMessage(
     );
 
 }
+/* =========================================
+   ROOM DESIGNER V3
+========================================= */
+
+let selectedItem = null;
+let roomCounter = 0;
+
+
+/* ---------- ADD FURNITURE ---------- */
+
+function addFurniture(emoji, name) {
+
+    const room = document.getElementById("room");
+
+    if (!room) return;
+
+    roomCounter++;
+
+    const item = document.createElement("div");
+
+    item.className = "draggable-item";
+
+    item.textContent = emoji;
+
+    item.dataset.name = name;
+    item.dataset.rotation = "0";
+    item.dataset.scale = "1";
+
+    item.style.left = "40%";
+    item.style.top = "40%";
+
+    room.appendChild(item);
+
+    makeDraggable(item);
+
+    selectItem(item);
+}
+
+
+/* ---------- SELECT ITEM ---------- */
+
+function selectItem(item) {
+
+    if (selectedItem) {
+        selectedItem.classList.remove("selected");
+    }
+
+    selectedItem = item;
+
+    item.classList.add("selected");
+
+    const controls =
+        document.getElementById("selected-controls");
+
+    if (controls) {
+        controls.classList.remove("hidden");
+    }
+}
+
+
+/* ---------- DRAG ---------- */
+
+function makeDraggable(item) {
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    item.addEventListener("mousedown", function(e) {
+
+        e.preventDefault();
+
+        selectItem(item);
+
+        dragging = true;
+
+        const rect =
+            item.getBoundingClientRect();
+
+        offsetX =
+            e.clientX - rect.left;
+
+        offsetY =
+            e.clientY - rect.top;
+
+    });
+
+
+    document.addEventListener("mousemove", function(e) {
+
+        if (!dragging) return;
+
+        const room =
+            document.getElementById("room");
+
+        if (!room) return;
+
+        const roomRect =
+            room.getBoundingClientRect();
+
+        let x =
+            e.clientX -
+            roomRect.left -
+            offsetX;
+
+        let y =
+            e.clientY -
+            roomRect.top -
+            offsetY;
+
+
+        x = Math.max(
+            0,
+            Math.min(
+                x,
+                roomRect.width - 90
+            )
+        );
+
+
+        y = Math.max(
+            0,
+            Math.min(
+                y,
+                roomRect.height - 90
+            )
+        );
+
+
+        item.style.left = x + "px";
+        item.style.top = y + "px";
+
+    });
+
+
+    document.addEventListener("mouseup", function() {
+
+        dragging = false;
+
+    });
+
+}
+
+
+/* ---------- ROTATE ---------- */
+
+function rotateSelected(amount) {
+
+    if (!selectedItem) return;
+
+    let rotation =
+        Number(
+            selectedItem.dataset.rotation
+        ) || 0;
+
+    rotation += amount;
+
+    selectedItem.dataset.rotation =
+        rotation;
+
+    updateTransform();
+}
+
+
+/* ---------- RESIZE ---------- */
+
+function resizeSelected(amount) {
+
+    if (!selectedItem) return;
+
+    let scale =
+        Number(
+            selectedItem.dataset.scale
+        ) || 1;
+
+    scale *= amount;
+
+    scale = Math.max(
+        0.5,
+        Math.min(
+            2.5,
+            scale
+        )
+    );
+
+    selectedItem.dataset.scale =
+        scale;
+
+    updateTransform();
+}
+
+
+/* ---------- TRANSFORM ---------- */
+
+function updateTransform() {
+
+    if (!selectedItem) return;
+
+    const rotation =
+        selectedItem.dataset.rotation;
+
+    const scale =
+        selectedItem.dataset.scale;
+
+    selectedItem.style.transform =
+        "rotate(" +
+        rotation +
+        "deg) scale(" +
+        scale +
+        ")";
+
+}
+
+
+/* ---------- DELETE ---------- */
+
+function deleteSelected() {
+
+    if (!selectedItem) return;
+
+    selectedItem.remove();
+
+    selectedItem = null;
+
+    const controls =
+        document.getElementById(
+            "selected-controls"
+        );
+
+    if (controls) {
+
+        controls.classList.add(
+            "hidden"
+        );
+
+    }
+
+}
+
+
+/* ---------- CLEAR ROOM ---------- */
+
+function clearRoom() {
+
+    const room =
+        document.getElementById("room");
+
+    if (!room) return;
+
+    const furniture =
+        room.querySelectorAll(
+            ".draggable-item"
+        );
+
+    furniture.forEach(
+        item => item.remove()
+    );
+
+    selectedItem = null;
+
+}
+
+
+/* ---------- ROOM THEMES ---------- */
+
+function changeTheme(theme) {
+
+    const room =
+        document.getElementById("room");
+
+    if (!room) return;
+
+
+    room.classList.remove(
+
+        "room-pink",
+        "room-kawaii",
+        "room-cottage",
+        "room-fairy",
+        "room-y2k",
+        "room-gothic",
+        "room-cozy",
+        "room-academia",
+        "room-minimal",
+        "room-garden"
+
+    );
+
+
+    room.classList.add(
+        "room-" + theme
+    );
+
+}
+
+
+/* ---------- SAVE ROOM ---------- */
+
+function saveRoom() {
+
+    const room =
+        document.getElementById("room");
+
+    if (!room) return;
+
+
+    const furniture =
+        room.querySelectorAll(
+            ".draggable-item"
+        );
+
+
+    const data = [];
+
+
+    furniture.forEach(item => {
+
+        data.push({
+
+            emoji:
+                item.textContent,
+
+            name:
+                item.dataset.name,
+
+            left:
+                item.style.left,
+
+            top:
+                item.style.top,
+
+            rotation:
+                item.dataset.rotation,
+
+            scale:
+                item.dataset.scale
+
+        });
+
+    });
+
+
+    localStorage.setItem(
+        "ellieRoom",
+        JSON.stringify(data)
+    );
+
+
+    alert(
+        "♡ Your room has been saved!"
+    );
+
+}
+
+
+/* ---------- LOAD ROOM ---------- */
+
+function loadRoom() {
+
+    const room =
+        document.getElementById("room");
+
+    if (!room) return;
+
+
+    clearRoom();
+
+
+    const saved =
+        localStorage.getItem(
+            "ellieRoom"
+        );
+
+
+    if (!saved) {
+
+        alert(
+            "You haven't saved a room yet! ♡"
+        );
+
+        return;
+
+    }
+
+
+    const data =
+        JSON.parse(saved);
+
+
+    data.forEach(itemData => {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "draggable-item";
+
+
+        item.textContent =
+            itemData.emoji;
+
+
+        item.dataset.name =
+            itemData.name;
+
+
+        item.dataset.rotation =
+            itemData.rotation;
+
+
+        item.dataset.scale =
+            itemData.scale;
+
+
+        item.style.left =
+            itemData.left;
+
+
+        item.style.top =
+            itemData.top;
+
+
+        room.appendChild(item);
+
+
+        makeDraggable(item);
+
+
+        item.style.transform =
+            "rotate(" +
+            itemData.rotation +
+            "deg) scale(" +
+            itemData.scale +
+            ")";
+
+    });
+
+}
+
+
+/* ---------- CHARACTER ---------- */
+
+function changeCharacter(character) {
+
+    const preview =
+        document.getElementById(
+            "character"
+        );
+
+    if (!preview) return;
+
+    preview.textContent =
+        character;
+
+}
