@@ -2099,3 +2099,782 @@ footer {
     object-fit: contain;
     image-rendering: pixelated;
 }
+/* =====================================================
+   ROSY LETTERS — COTTAGECORE THEME
+   Add this at the VERY BOTTOM of style.css
+===================================================== */
+
+:root {
+    --pink: #d6a0ad;
+    --dark-pink: #9f6575;
+    --light-pink: #f7e8e8;
+
+    --cream: #fffaf0;
+    --paper: #fdf6e7;
+    --sage: #a9b89a;
+    --dark-sage: #66755d;
+    --moss: #78856b;
+
+    --brown: #806957;
+    --dark-brown: #5c493d;
+
+    --white: #fffdf8;
+    --text: #65564d;
+    --border: #ddcfba;
+
+    --shadow:
+        0 10px 25px
+        rgba(91, 72, 54, 0.10);
+}
+
+
+/* =====================================
+   WHOLE WEBSITE
+===================================== */
+
+body {
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(221, 198, 166, .18),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(169, 184, 154, .17),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #f8f0df
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* subtle paper texture */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    z-index: -1;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(90, 70, 50, .025) 0,
+            rgba(90, 70, 50, .025) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+nav,
+.cottage-nav {
+    background:
+        rgba(255, 250, 240, .94);
+
+    border-bottom:
+        1px solid #d8c8ae;
+
+    box-shadow:
+        0 3px 12px
+        rgba(90, 70, 50, .07);
+
+    backdrop-filter: blur(12px);
+}
+
+
+nav a {
+    color: #705c4f;
+
+    padding: 6px 4px;
+
+    transition:
+        color .2s,
+        transform .2s;
+}
+
+
+nav a:hover {
+    color: var(--dark-sage);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =====================================
+   HERO / HOME PAGE
+===================================== */
+
+.hero {
+    min-height: 88vh;
+
+    position: relative;
+}
+
+
+/* little cottage meadow feeling */
+
+.cottage-hero::before {
+    content:
+        "🌿   🌼   🍓   🌱   🌷";
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 23px;
+
+    letter-spacing: 15px;
+
+    opacity: .75;
+
+    pointer-events: none;
+}
+
+
+.hero-card,
+.cottage-paper {
+    position: relative;
+
+    background:
+        rgba(255, 250, 239, .94);
+
+    border:
+        1px solid #d8c8ae;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 14px 35px
+        rgba(93, 73, 55, .12);
+}
+
+
+/* tiny decorative flowers on hero */
+
+.cottage-paper::before {
+    content: "🌿";
+
+    position: absolute;
+
+    left: 20px;
+
+    top: 18px;
+
+    font-size: 27px;
+
+    transform: rotate(-25deg);
+}
+
+
+.cottage-paper::after {
+    content: "🌷";
+
+    position: absolute;
+
+    right: 20px;
+
+    bottom: 18px;
+
+    font-size: 27px;
+}
+
+
+/* =====================================
+   TEXT
+===================================== */
+
+h1 {
+    color: #76584f;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            76px
+        );
+}
+
+
+h2 {
+    color: #806456;
+}
+
+
+.section-title {
+    color: #76584f;
+
+    position: relative;
+}
+
+
+.section-title::after {
+    content: "· 🌿 ·";
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #9aaa8b;
+
+    font-size: 16px;
+
+    letter-spacing: 5px;
+}
+
+
+.kicker {
+    color: #79896b;
+
+    letter-spacing: 3px;
+
+    text-transform: lowercase;
+}
+
+
+.section-intro {
+    text-align: center;
+
+    max-width: 600px;
+
+    margin:
+        -20px auto 35px;
+
+    color: #847267;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.button {
+    background:
+        #9c7a6a;
+
+    color:
+        #fffaf2;
+
+    border:
+        1px solid #806354;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 3px 8px
+        rgba(92, 73, 61, .13);
+
+    transition:
+        transform .2s,
+        background .2s,
+        box-shadow .2s;
+}
+
+
+.button:hover {
+    background:
+        #77866a;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 12px
+        rgba(92, 73, 61, .15);
+}
+
+
+.button.secondary {
+    background:
+        #e4eadb;
+
+    color:
+        #63705b;
+
+    border:
+        1px solid #bdc9b1;
+}
+
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* =====================================
+   DATE + CLOCK
+===================================== */
+
+.date-clock-bubble {
+    background:
+        #e9dfc9;
+
+    color:
+        #69574b;
+
+    border:
+        1px solid #d2bea3;
+
+    border-radius: 18px;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.7),
+        0 5px 12px
+        rgba(90,70,50,.08);
+}
+
+
+#date {
+    color:
+        #7b6a5e;
+}
+
+
+#clock {
+    color:
+        #5e5046;
+
+    font-family:
+        "Playfair Display",
+        serif;
+}
+
+
+/* =====================================
+   DIVIDERS
+===================================== */
+
+.tiny-divider {
+    margin-top: 28px;
+
+    color: #899778;
+
+    font-size: 17px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =====================================
+   SECTIONS
+===================================== */
+
+section {
+    position: relative;
+}
+
+
+/* =====================================
+   CARDS
+===================================== */
+
+.card,
+.cottage-card,
+.flower-fact,
+.journal-entry,
+.journal-form,
+.music-card,
+.music-player,
+.garden-card {
+
+    background:
+        rgba(255, 250, 239, .94);
+
+    border:
+        1px solid #ddcfba;
+
+    box-shadow:
+        0 9px 22px
+        rgba(90, 70, 50, .09);
+}
+
+
+.card,
+.cottage-card {
+    border-radius: 18px;
+}
+
+
+.cottage-card {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* tiny corner decoration */
+
+.cottage-card::after {
+    content: "🌿";
+
+    position: absolute;
+
+    right: 13px;
+
+    bottom: 10px;
+
+    opacity: .28;
+
+    font-size: 22px;
+}
+
+
+.card:hover,
+.cottage-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 13px 28px
+        rgba(90, 70, 50, .13);
+}
+
+
+/* =====================================
+   EXPLORE CARDS
+===================================== */
+
+.cottage-grid {
+    gap: 25px;
+}
+
+
+.cottage-grid .card {
+    text-align: center;
+
+    min-height: 235px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.cottage-grid .emoji {
+    font-size: 42px;
+
+    margin-bottom: 7px;
+}
+
+
+/* =====================================
+   FLOWER FACT
+===================================== */
+
+.flower-fact {
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #f4eedf
+        );
+}
+
+
+.fact-text {
+    color:
+        #6e6056;
+}
+
+
+/* =====================================
+   ABOUT / DAILY NOTE
+===================================== */
+
+.daily-note {
+    max-width: 680px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.tiny-text {
+    color: #928074;
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+
+/* =====================================
+   GALLERY
+===================================== */
+
+.polaroid {
+    background:
+        #fffaf0;
+
+    border:
+        1px solid #ddcfba;
+
+    box-shadow:
+        0 8px 18px
+        rgba(80, 60, 45, .12);
+}
+
+
+.photo {
+    background:
+        linear-gradient(
+            135deg,
+            #eee6d5,
+            #f8f2e5
+        );
+
+    border:
+        1px dashed #c8b89e;
+}
+
+
+.polaroid p {
+    color:
+        #65574d;
+}
+
+
+/* =====================================
+   JOURNAL
+===================================== */
+
+.journal-entry {
+    background:
+        #fffaf0;
+
+    border:
+        1px solid #ddcfba;
+
+    border-left:
+        5px solid #a6b395;
+}
+
+
+.journal-date {
+    color:
+        #7b886d;
+}
+
+
+.journal-entry h2 {
+    color:
+        #755f52;
+}
+
+
+.journal-entry p,
+.journal-entry ul {
+    color:
+        #65584f;
+}
+
+
+.journal-note {
+    background:
+        #e9eddf;
+
+    color:
+        #65705c;
+
+    border:
+        1px solid #cad3bd;
+}
+
+
+/* =====================================
+   FORMS
+===================================== */
+
+input,
+textarea,
+select,
+.journal-form input,
+.journal-form textarea {
+
+    background:
+        #fffdf7;
+
+    border:
+        1px solid #d9cab4;
+
+    color:
+        #62544b;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus,
+.journal-form input:focus,
+.journal-form textarea:focus {
+
+    outline:
+        2px solid
+        rgba(156, 174, 139, .30);
+
+    border-color:
+        #96a584;
+}
+
+
+/* =====================================
+   MUSIC
+===================================== */
+
+.music-card {
+    background:
+        #fffaf0;
+
+    border-color:
+        #d9cbb6;
+}
+
+
+.music-card h2,
+.music-player h2 {
+    color:
+        #725e51;
+}
+
+
+.music-card p,
+.music-player > p {
+    color:
+        #87756a;
+}
+
+
+.music-note {
+    background:
+        #e8ecdf;
+}
+
+
+/* =====================================
+   COTTAGE FOOTER SCENE
+===================================== */
+
+.cottage-footer-scene {
+    padding:
+        20px 20px 0;
+}
+
+
+.little-scene {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 25px;
+
+    font-size: 30px;
+
+    opacity: .85;
+
+    flex-wrap: wrap;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    margin-top: 30px;
+
+    padding:
+        55px 20px;
+
+    background:
+        linear-gradient(
+            #eee6d5,
+            #dfd1ba
+        );
+
+    border-top:
+        1px solid #cbbb9f;
+
+    color:
+        #705d50;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:700px) {
+
+    .cottage-hero::before {
+        font-size: 18px;
+
+        letter-spacing: 5px;
+    }
+
+
+    .hero-card,
+    .cottage-paper {
+        border-radius: 22px;
+    }
+
+
+    .little-scene {
+        gap: 13px;
+
+        font-size: 24px;
+    }
+
+}
