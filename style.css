@@ -2921,3 +2921,80 @@ footer {
 
     transform: scaleX(-1);
 }
+/* =====================================
+   HOME — SIDE FLOWERS
+===================================== */
+
+.home-flower {
+    position: absolute;
+
+    width: 70px;
+
+    image-rendering: pixelated;
+
+    pointer-events: none;
+
+    z-index: 6;
+}
+
+
+/* LEFT SIDE */
+
+.flower-left-1 {
+    left: 20px;
+    top: 380px;
+
+    transform: rotate(-10deg);
+}
+
+
+.flower-left-2 {
+    left: -10px;
+    top: 560px;
+
+    width: 85px;
+
+    transform: rotate(8deg);
+}
+
+
+.flower-left-3 {
+    left: 35px;
+    top: 760px;
+
+    width: 65px;
+
+    transform: rotate(-6deg);
+}
+
+
+/* RIGHT SIDE */
+
+.flower-right-1 {
+    right: 20px;
+    top: 470px;
+
+    width: 80px;
+
+    transform: scaleX(-1) rotate(-8deg);
+}
+
+
+.flower-right-2 {
+    right: -5px;
+    top: 680px;
+
+    width: 65px;
+
+    transform: scaleX(-1) rotate(9deg);
+}
+
+
+.flower-right-3 {
+    right: 30px;
+    top: 850px;
+
+    width: 85px;
+
+    transform: scaleX(-1) rotate(-5deg);
+}
